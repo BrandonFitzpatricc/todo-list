@@ -1,3 +1,47 @@
-body {
-    background-color: blue;
+.text {
+    color: #5D5C5C;
+}
+
+.icon {
+    filter: invert(37%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(93%) contrast(90%);
+}
+
+.sidebar {
+    width: clamp(300px, 15%, 350px);
+    height: 100%;
+    padding: 20px;
+    background-color: #F0F0F0;
+    display: flex;
+    flex-direction: column;
+
+    & .tab {
+        padding: 4px 10px;
+        border-style: none;
+        border-radius: 15px;
+        background-color: inherit;
+        display: flex;
+        align-items: center;
+
+        &.my-projects {
+            font-size: 24px;
+            font-weight: bold;
+            gap: 15px;
+
+            & .icon {
+                width: 45px;
+                height: auto;
+            }
+        }
+
+        &.project, &.new-project {
+            font-size: 18px;
+            margin-left: 8px;
+            gap: 10px;
+
+            & .icon {
+                width: 40px;
+                height: auto;
+            }
+        }
+    }
 }
