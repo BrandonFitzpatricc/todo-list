@@ -5,31 +5,187 @@
 </head>
 
 <body>
-    <div class="sidebar">
-        <button class="tab my-projects">
-            <img class="icon" src="./icons/projects.svg" alt="icon of a folder with subfolders">
+    <div id="sidebar" class="sidebar">
+        <button id="my-projects" class="tab my-projects">
+            <img class="icon" src="./icons/projects.svg" alt="icon of a folder with subfolders" width="45" height="45">
             <div class="text">My Projects</div>
         </button>
 
         <button class="tab project">
-            <img class="icon" src="./icons/project.svg" alt="icon of a folder">
+            <img class="icon" width="40" height="40" src="./icons/project.svg" alt="icon of a folder">
             <div class="text">Lorem Ipsum Dolor</div>
         </button>
 
         <button class="tab project">
-            <img class="icon" src="./icons/project.svg" alt="icon of a folder">
+            <img class="icon" width="40" height="40" src="./icons/project.svg" alt="icon of a folder">
             <div class="text">Lorem Ipsum Dolor</div>
         </button>
 
         <button class="tab project">
-            <img class="icon" src="./icons/project.svg" alt="icon of a folder">
+            <img class="icon" width="40" height="40" src="./icons/project.svg" alt="icon of a folder">
             <div class="text">Lorem Ipsum Dolor</div>
         </button>
 
-        <button class="tab new-project">
-            <img class="icon" src="./icons/new-project.svg" alt="icon of a plus sign">
+        <button id="new-project" class="tab new-project">
+            <img class="icon" width="40" height="40" src="./icons/new-project.svg" alt="icon of a plus sign">
             <div class="text">New Project</div>
         </button>
+    </div>
+
+    <div id="main-content" class="main-content">
+        <div class="project">
+            <div class="project-heading">
+                <input class="text" type="text" value="Project 1" readonly>
+                <button><img class="icon" width="40" height="40" src="./icons/add-task.svg" alt="icon of a plus sign inside of a circle"></button>
+                <button><img class="icon" width="40" height="40" src="./icons/edit.svg" alt="icon of a pen"></button>
+                <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+            </div>
+
+            <hr />
+
+            <div class="tasks">
+                <div class="text date">March 3 2026</div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 1</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 2</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 3</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+            </div>
+
+            <div class="tasks">
+                <div class="text date">March 4 2026</div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 1</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 2</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 3</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+            </div>
+        </div>
+
+        <div class="project">
+            <div class="project-heading">
+                <input class="text" type="text" value="Project 2" readonly>
+                <button><img class="icon" width="40" height="40" src="./icons/add-task.svg" alt="icon of a plus sign inside of a circle"></button>
+                <button><img class="icon" width="40" height="40" src="./icons/edit.svg" alt="icon of a pen"></button>
+                <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+            </div>
+
+            <hr />
+
+            <div class="tasks">
+                <div class="text date">March 3 2026</div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 1</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 2</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 3</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+            </div>
+
+            <div class="tasks">
+                <div class="text date">March 4 2026</div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 1</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 2</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+
+                <div class="task">
+                    <input type="checkbox">
+                    <div class="text">Task 3</div>
+                    <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
+                    <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
+                </div>
+
+                <hr />
+            </div>
+        </div>
     </div>
 </body>
 </html>

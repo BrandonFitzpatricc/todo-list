@@ -1,24 +1,33 @@
+body {
+    display: grid;
+    grid-template-columns: minmax(300px, 400px) minmax(500px, 1fr);
+    position: relative;
+}
+
 .text {
     color: #5D5C5C;
 }
 
 .icon {
     filter: invert(37%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(93%) contrast(90%);
+    width: 40px;
+    height: auto;
+}
+
+button {
+    border-style: none;
+    background-color: inherit;
+    cursor: pointer;
 }
 
 .sidebar {
-    width: clamp(300px, 15%, 350px);
-    height: 100%;
     padding: 20px;
     background-color: #F0F0F0;
-    display: flex;
-    flex-direction: column;
 
     & .tab {
+        width: 100%;
         padding: 4px 10px;
-        border-style: none;
         border-radius: 15px;
-        background-color: inherit;
         display: flex;
         align-items: center;
 
@@ -29,7 +38,6 @@
 
             & .icon {
                 width: 45px;
-                height: auto;
             }
         }
 
@@ -37,10 +45,83 @@
             font-size: 18px;
             margin-left: 8px;
             gap: 10px;
+        }
+    }
+}
 
-            & .icon {
-                width: 40px;
-                height: auto;
+& .main-content {
+    padding: 75px 15px;
+
+    & .project {
+        width: 80%;
+        margin: 0 auto;
+
+        & input {
+            width: 9ch;
+            border: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        & hr {
+            margin: 15px 0;
+        }
+
+        & .project-heading {
+            display: flex;
+            gap: 10px;
+            margin: 0 5px;
+
+            & .text {
+                margin-right: auto;
+                font-size: 30px;
+                font-weight: bold;
+            }
+        }
+
+        & .tasks {
+            font-size: 22px;
+
+            & .date {
+                margin: 25px 0 0 5px;
+            }
+
+            & .task {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin: 0 15px;
+
+                & .text {
+                    margin-right: auto;
+                }
+
+                & input[type="checkbox"] {
+                    appearance: none;
+                    position: relative;
+                    width: 30px;
+                    height: 30px;
+                    border: 2px solid grey;
+                    border-radius: 25px;
+
+                    &:checked::before {
+                        content: "⬤";
+                        color: grey;
+                        position: absolute;
+                        left: 0.5px;
+                        bottom: -0.5px;
+                    }
+                }
+            }
+
+            & + .tasks {
+                margin-top: 50px;
+            }
+
+            &:last-child {
+                margin-bottom: 75px;
             }
         }
     }
