@@ -1,4 +1,4 @@
 import "../stylesheets/custom-reset.css";
 import "../stylesheets/style.css";
 
-console.log("hello");
+document.querySelector("#add-task-dialog").showModal();
