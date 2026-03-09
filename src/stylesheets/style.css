@@ -5,7 +5,7 @@ body {
 }
 
 .text {
-    color: #5D5C5C;
+    color: #5d5c5c;
 }
 
 .icon {
@@ -22,7 +22,7 @@ button {
 
 .sidebar {
     padding: 20px;
-    background-color: #F0F0F0;
+    background-color: #f0f0f0;
 
     & .tab {
         width: 100%;
@@ -78,22 +78,78 @@ button {
         }
     }
 
+    & input[type="checkbox"], select {
+
+        &.important {
+            --primary-color: #ff0000;
+            --secondary-color: #ffb0b0;
+        }
+
+        &.semi-important {
+            --primary-color: #5b5b5b;
+            --secondary-color: #d3d3d3;
+        }
+
+        &.not-important {
+            --primary-color: #0690be;
+            --secondary-color: #add8e6;
+        }
+    }
+
     & input[type="checkbox"] {
         appearance: none;
         position: relative;
         width: 30px;
         height: 30px;
-        border: 2px solid grey;
+        border: 2px solid var(--primary-color);
         border-radius: 25px;
+        background-color: var(--secondary-color);
 
         &:checked::before {
             content: "⬤";
-            color: grey;
+            color: var(--primary-color);
             position: absolute;
             left: 0.5px;
             bottom: -0.5px;
         }
     }
+
+    select {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+        background-color: var(--secondary-color);
+        box-shadow: 1px 1px 1px var(--primary-color);
+    }
+
+    /* & .important {
+        border-color: #ff0000;
+        color: #ff0000;
+        background-color: #ffb0b0;
+
+        &::before {
+            color: #ff0000;
+        }
+    }
+
+    & .semi-important {
+        border-color: #5b5b5b;
+        color: #5b5b5b;
+        background-color: #d3d3d3;
+
+        &::before {
+            color: #5b5b5b;
+        }
+    }
+
+    & .not-important {
+        border-color: #0690be;
+        color:  #0690be;
+        background-color: #add8e6;
+
+        &::before {
+            color: #0690be;
+        }
+    } */
 
     & .project {
         width: 80%;
@@ -172,13 +228,8 @@ button {
             & .task-priority {
                 appearance: none;
                 font-weight: bold;
-                border: 1px solid black;
+                border: 2px solid;
                 padding: 0 10px;
-                box-shadow: 1px 1px 1px black;
-
-                &:disabled {
-                    color: inherit;
-                }
             }
         }
 
