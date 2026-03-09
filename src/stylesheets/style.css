@@ -52,37 +52,67 @@ button {
 & .main-content {
     padding: 75px 15px;
 
+    hr {
+        margin: 15px 0;
+    }
+
+    & .heading {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 5px;
+
+        & .text {
+            margin-right: auto;
+            font-size: 30px;
+            font-weight: bold;
+        }
+    }
+
+    & input:not([type="checkbox"]), & textarea, & select {
+        border: none;
+        background-color: inherit;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    & input[type="checkbox"] {
+        appearance: none;
+        position: relative;
+        width: 30px;
+        height: 30px;
+        border: 2px solid grey;
+        border-radius: 25px;
+
+        &:checked::before {
+            content: "⬤";
+            color: grey;
+            position: absolute;
+            left: 0.5px;
+            bottom: -0.5px;
+        }
+    }
+
     & .project {
         width: 80%;
         margin: 0 auto;
 
-        & input {
+        & input[type="text"] {
             width: 9ch;
-            border: none;
-
-            &:focus {
-                outline: none;
-            }
-        }
-
-        & hr {
-            margin: 15px 0;
-        }
-
-        & .project-heading {
-            display: flex;
-            gap: 10px;
-            margin: 0 5px;
-
-            & .text {
-                margin-right: auto;
-                font-size: 30px;
-                font-weight: bold;
-            }
         }
 
         & .tasks {
             font-size: 22px;
+
+            & + .tasks {
+                margin-top: 50px;
+            }
+
+            &:last-child {
+                margin-bottom: 75px;
+            }
 
             & .date {
                 margin: 25px 0 0 5px;
@@ -97,32 +127,66 @@ button {
                 & .text {
                     margin-right: auto;
                 }
+            }
+        }
+    }
 
-                & input[type="checkbox"] {
-                    appearance: none;
-                    position: relative;
-                    width: 30px;
-                    height: 30px;
-                    border: 2px solid grey;
-                    border-radius: 25px;
+    & .expanded-task {
+        width: 80%;
+        margin: 0 auto;
+        font-size: 22px;
 
-                    &:checked::before {
-                        content: "⬤";
-                        color: grey;
-                        position: absolute;
-                        left: 0.5px;
-                        bottom: -0.5px;
-                    }
+        & .task-heading {
+            margin: 0 10px;
+        
+            & input[type="checkbox"] {
+                width: 35px;
+                height: 35px;
+
+                &::before {
+                    font-size: 25px;
+                    left: 1.5px;
+                    top: -5px
                 }
             }
 
-            & + .tasks {
-                margin-top: 50px;
+            & input[type="text"] {
+                width: 6ch;
+            }
+        }
+
+        & .task-info {
+            margin: 0 10px;
+            display: flex;
+
+            & .task-date {
+                margin-right: auto;
+                width: 175px;
+
+                &::-webkit-calendar-picker-indicator {
+                    display: none;
+                    -webkit-appearance: none;
+                }
             }
 
-            &:last-child {
-                margin-bottom: 75px;
+            & .task-priority {
+                appearance: none;
+                font-weight: bold;
+                border: 1px solid black;
+                padding: 0 10px;
+                box-shadow: 1px 1px 1px black;
+
+                &:disabled {
+                    color: inherit;
+                }
             }
+        }
+
+        & .task-description {
+            width: 100%;
+            height: 300px;
+            resize: none;
+            margin: 0 10px;
         }
     }
 }
