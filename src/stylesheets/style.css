@@ -107,6 +107,7 @@ select {
 
             &.project input {
                 background-color: inherit;
+                cursor: pointer;
             }
         }
     }
