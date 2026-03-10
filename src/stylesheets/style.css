@@ -68,14 +68,18 @@ select {
 
     & .tab {
         width: 100%;
-        padding: 4px 35px;
         display: flex;
         align-items: center;
+
+        &:hover, &.selected {
+            background-color: #808080;
+        }
 
         &.my-projects {
             font-size: 25px;
             font-weight: bold;
-            margin-top: 20px;
+            padding: 7px 35px;
+            margin-top: 25px;
             gap: 15px;
 
             & .icon {
@@ -85,7 +89,7 @@ select {
 
         &.project, &.new-project {
             font-size: 18px;
-            padding-left: 42px;
+            padding: 4px 42px;
             gap: 10px;
         }
     }
