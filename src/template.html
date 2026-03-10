@@ -33,9 +33,9 @@
     </div>
 
     <div id="main-content" class="main-content">
-        <!-- <div class="project">
+        <div class="project">
             <div class="heading project-heading">
-                <input class="project-name" type="text" value="Project " readonly>
+                <input class="name project-name" type="text" value="Project" readonly>
                 <button><img class="icon" width="40" height="40" src="./icons/add-task.svg" alt="icon of a plus sign inside of a circle"></button>
                 <button><img class="icon" width="40" height="40" src="./icons/edit.svg" alt="icon of a pen"></button>
                 <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -44,12 +44,12 @@
             <hr />
 
             <div class="tasks">
-                <div class="date">March 3 2026</div>
+                <div class="date-heading">March 3 2026</div>
 
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox" class="semi-important">
+                    <input class="important" type="checkbox">
                     <div class="task-name">Task 1</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -58,7 +58,7 @@
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox">
+                    <input class="semi-important" type="checkbox">
                     <div class="task-name">Task 2</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -67,7 +67,7 @@
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox">
+                    <input class="not-important" type="checkbox">
                     <div class="task-name">Task 3</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -82,7 +82,7 @@
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox">
+                    <input class="important" type="checkbox">
                     <div class="task-name">Task 1</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -91,7 +91,7 @@
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox">
+                    <input class="semi-important" type="checkbox">
                     <div class="task-name">Task 2</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -100,7 +100,7 @@
                 <hr />
 
                 <div class="task">
-                    <input type="checkbox">
+                    <input class="not-important" type="checkbox">
                     <div class="task-name">Task 3</div>
                     <button><img class="icon" width="40" height="40" src="./icons/expand-task.svg" alt="view and edit icon"></button>
                     <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -108,12 +108,12 @@
 
                 <hr />
             </div>
-        </div> -->
+        </div>
 
         <div class="expanded-task">
             <div class="heading task-heading">
-                <input type="checkbox" class="not-important">
-                <input class="task-name" type="text" value="Task 1" readonly>
+                <input class="not-important" type="checkbox">
+                <input class="name task-name" type="text" value="Task 1" readonly>
                 <button><img class="icon" width="40" height="40" src="./icons/add-task.svg" alt="icon of a plus sign inside of a circle"></button>
                 <button><img class="icon" width="40" height="40" src="./icons/edit.svg" alt="icon of a pen"></button>
                 <button><img class="icon" width="40" height="40" src="./icons/delete.svg" alt="icon of a trash can"></button>
@@ -122,8 +122,8 @@
             <hr />
 
             <div class="task-info">
-                <input class="task-date" type="date" value="2026-03-06">
-                <select class="task-priority not-important">
+                <input class="task-date" type="date" value="2026-03-06" readonly>
+                <select class="task-priority not-important" disabled>
                     <option>Not Important</option>
                     <option>Semi Important</option>
                     <option>Important</option>
@@ -134,32 +134,31 @@
 
             <textarea class="task-description" type="text" readonly>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</textarea>
         </div>
-    </div>   
+    </div>
 
-    <dialog class="add-task-dialog" id="add-task-dialog" closedby="closerequest">
-        <form class="add-task-form" id="add-task-form" action="">
+    <dialog id="add-task-dialog" class="add-task-dialog"closedby="closerequest">
+        <form id="add-task-form" class="add-task-form" action="">
             <div class="form-title">New Task</div>
 
             <label for="title">Title</label>
-            <input class="task-title" id="title" type="text">
+            <input id="title" class="task-title" type="text">
 
             <label for="description">Description</label>
-            <textarea class="task-description" id="description"></textarea>
+            <textarea id="description" class="task-description"></textarea>
 
             <label for="due-date">Due Date</label>
-            <input class="task-date" id="due-date" type="date">
+            <input id="due-date" class="task-date" type="date">
 
             <label for="priority">Priority</label>
-            <select class="task-priority not-important" id="priority">
+            <select id="priority" class="task-priority not-important">
                 <option>Not Important</option>
                 <option>Semi Important</option>
                 <option>Important</option>
             </select>
 
-            <button class="add-task-btn" id="submit-task-btn" type="button">Add Task</button>
+            <button id="submit-task-btn" class="add-task-btn" type="button">Add Task</button>
 
-            <button class="close-form-btn" id="close-form-btn" type="button">
-                <img class="icon" width="50" height="50" src="./icons/close-box.svg"></button>
+            <button id="close-form-btn" class="close-form-btn" type="button"></button>
         </form>
     </dialog>
 </body>
