@@ -24,6 +24,14 @@ textarea {
     padding: 5px;
 }
 
+& :is(input, textarea):read-only, :disabled {
+    border: none;
+
+    &:focus {
+        outline: none;
+    }
+}
+
 input[type="checkbox"], select {
 
     &.important {
@@ -96,6 +104,10 @@ select {
                 padding: 4px 42px;
                 gap: 10px;
             }
+
+            &.project input {
+                background-color: inherit;
+            }
         }
     }
 }
@@ -121,15 +133,7 @@ select {
         }
     }
 
-    & :is(input, textarea):read-only, :disabled {
-        border: none;
-
-        &:focus {
-            outline: none;
-        }
-    }
-
-    :is(input, textarea):read-write {
+    & :is(input, textarea):read-write {
         background-color: #f0f0f0;
     }
 
