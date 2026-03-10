@@ -1,10 +1,11 @@
 body {
+    font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     display: grid;
     grid-template-columns: minmax(300px, 400px) minmax(500px, 1fr);
 }
 
 * {
-    color: #5D5C5C;
+    color: #5d5c5c;
 }
 
 .icon {
@@ -51,6 +52,10 @@ select {
 
     &:focus {
         outline: none;
+    }
+
+    &:enabled {
+        cursor: pointer;
     }
 
     & option {
@@ -217,7 +222,6 @@ select {
 
 .add-task-dialog {
     border: 2px solid #5d5c5c;
-    border-radius: 10px;
     width: 800px;
     height: 800px;
     justify-self: center;
@@ -243,6 +247,14 @@ select {
             width: 100%;
             padding: 5px 10px;
             resize: none;
+
+            &:focus {
+                outline: none;
+            }
+        }
+
+        input, .task-description, .add-task-btn {
+            box-shadow: 2px 2px 2px #5d5c5c;
         }
 
         & .task-description {
@@ -254,6 +266,10 @@ select {
             width: 28%;
             border: 1px solid #5d5c5c;
             margin-top: 25px;
+
+            &:active {
+                box-shadow: inset 2px 2px 2px #5d5c5c;
+            }
         }
 
         & .close-form-btn {
