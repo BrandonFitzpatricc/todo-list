@@ -66,31 +66,36 @@ select {
 .sidebar {
     background-color: #f0f0f0;
 
-    & .tab {
-        width: 100%;
-        display: flex;
-        align-items: center;
+    & .tabs {
+        position: sticky;
+        top: 25px;
 
-        &:hover, &.selected {
-            background-color: #d3d3d3;
-        }
+        & .tab {
+            width: 100%;
+            display: flex;
+            align-items: center;
 
-        &.my-projects {
-            font-size: 25px;
-            font-weight: bold;
-            padding: 7px 35px;
-            margin-top: 25px;
-            gap: 15px;
-
-            & .icon {
-                width: 45px;
+            &:hover, &.selected {
+                background-color: #d3d3d3;
             }
-        }
 
-        &.project, &.new-project {
-            font-size: 18px;
-            padding: 4px 42px;
-            gap: 10px;
+            &.my-projects {
+                font-size: 25px;
+                font-weight: bold;
+                padding: 7px 35px;
+                margin-top: 25px;
+                gap: 15px;
+
+                & .icon {
+                    width: 45px;
+                }
+            }
+
+            &.project, &.new-project {
+                font-size: 18px;
+                padding: 4px 42px;
+                gap: 10px;
+            }
         }
     }
 }
