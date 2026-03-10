@@ -19,6 +19,10 @@ button {
     cursor: pointer;
 }
 
+textarea {
+    padding: 5px;
+}
+
 input[type="checkbox"], select {
 
     &.important {
@@ -42,8 +46,13 @@ select {
     border-color: var(--primary-color);
     background-color: var(--secondary-color);
     box-shadow: 1px 1px 1px var(--primary-color);
+    position: relative;
 
-    option {
+    &:focus {
+        outline: none;
+    }
+
+    & option {
         background-color: #FFFFFF;
     }
 }
@@ -90,6 +99,7 @@ select {
         margin: 0 5px;
 
         & .name {
+            width: 500px;
             margin-right: auto;
             font-size: 30px;
             font-weight: bold;
@@ -102,6 +112,10 @@ select {
         &:focus {
             outline: none;
         }
+    }
+
+    :is(input, textarea):read-write {
+        background-color: #f0f0f0;
     }
 
     & input[type="checkbox"] {
@@ -125,11 +139,6 @@ select {
     & .project {
         width: 80%;
         margin: 0 auto;
-
-        /* temporary code */
-        & project-name {
-            width: 9ch;
-        }
 
         & .tasks {
             font-size: 22px;
@@ -176,11 +185,6 @@ select {
                     left: 1.5px;
                     top: -5px
                 }
-            }
-
-            /* temporary code */
-            & input[type="text"] {
-                width: 6ch;
             }
         }
 
@@ -255,13 +259,13 @@ select {
         & .close-form-btn {
             width: 50px;
             height: 50px;
-            background: url("../icons/close-box.svg") center / 50px no-repeat;
+            background: url("../icons/close-box-outline.svg") center / 50px no-repeat;
             position: absolute;
             top: 10px;
             right: 10px;
 
-            & .icon {
-                width: 50px;
+            &:hover {
+                background-image: url("../icons/close-box-filled.svg");
             }
         }
     }
