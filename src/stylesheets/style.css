@@ -42,6 +42,7 @@ input[type="checkbox"], select {
 }
 
 select {
+    appearance: none;
     color: var(--primary-color);
     border-color: var(--primary-color);
     background-color: var(--secondary-color);
@@ -85,7 +86,7 @@ select {
     }
 }
 
-& .main-content {
+.main-content {
     padding: 75px 15px;
 
     hr {
@@ -199,7 +200,6 @@ select {
 
             & .task-priority {
                 width: 215px;
-                appearance: none;
                 font-weight: bold;
                 border: 1px solid;
                 padding: 0 10px;
