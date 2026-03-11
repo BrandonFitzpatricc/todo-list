@@ -198,6 +198,14 @@ select {
         margin: 0 auto;
         font-size: 22px;
 
+        & .back-btn {
+            border: 1px solid #000000;
+            padding: 0 10px;
+            margin-bottom: 15px;
+            font-weight: bold;
+            box-shadow: 2px 2px 2px #5d5c5c;
+        }
+
         & .task-heading {
             margin: 0 10px;
         
