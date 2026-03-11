@@ -1,4 +1,5 @@
 import { Task } from "./task.js";
+import { compareAsc } from "date-fns";
 
 class Project {
     #id;
@@ -37,6 +38,10 @@ class Project {
 
     findTask(id) {
         this.#tasks.find(task => task.id === id);
+    }
+
+    sortTasks() {
+        return this.#tasks.sort((task1, task2) => compareAsc(task1.dueDate, task2.dueDate));
     }
 }
 

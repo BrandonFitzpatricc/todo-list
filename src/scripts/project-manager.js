@@ -2,6 +2,8 @@ import { Project } from "./project.js";
 
 const projects = [];
 
+const getProjects = () => projects;
+
 const addProject = (name) => projects.push(new Project(name));
 
 const deleteProject = (id) => {
@@ -12,4 +14,4 @@ const findProject = (id) => {
     return projects.find(project => project.id === id);
 }
 
-export { addProject, deleteProject, findProject };
+export { getProjects, addProject, deleteProject, findProject };
