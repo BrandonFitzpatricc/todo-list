@@ -109,6 +109,10 @@ select {
                 width: 100%;
                 background-color: inherit;
                 cursor: pointer;
+
+                &:focus {
+                    outline: none;
+                }
             }
         }
     }
