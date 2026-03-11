@@ -1,7 +1,7 @@
 body {
     font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
     display: grid;
-    grid-template-columns: minmax(350px, 400px) minmax(525px, 1fr);
+    grid-template-columns: minmax(375px, 425px) minmax(700px, 1fr);
 }
 
 * {
