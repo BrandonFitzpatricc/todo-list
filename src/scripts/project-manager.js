@@ -1,8 +1,8 @@
 import { Project } from "./project.js";
 
-const projects = [];
+let allProjectsOpen = true;
 
-const getProjects = () => projects;
+const projects = [];
 
 const addProject = (name) => projects.push(new Project(name));
 
@@ -14,4 +14,22 @@ const findProject = (id) => {
     return projects.find(project => project.id === id);
 }
 
-export { getProjects, addProject, deleteProject, findProject };
+const toggleProject = (id) => {
+    if(allProjectsOpen) {
+        projects.forEach(project => project.toggleOpenStatus());
+        allProjectsOpen = false;
+    }
+
+    findProject(id).toggleOpenStatus();
+}
+
+const openAllProjects = () => {
+    projects.forEach(project => project.isOpen = true);
+    allProjectsOpen = true;
+}
+
+const getOpenProjects = () => {
+    return projects.filter(project => project.isOpen);
+}
+
+export { projects, addProject, deleteProject, findProject, toggleProject, openAllProjects, getOpenProjects };

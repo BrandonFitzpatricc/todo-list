@@ -5,11 +5,13 @@ class Project {
     #id;
     #name;
     #tasks;
+    #isOpen;
 
     constructor(name) {
         this.#id = crypto.randomUUID();
         this.#name = name;
         this.#tasks = [];
+        this.#isOpen = true;
     }
 
     get id() {
@@ -26,6 +28,18 @@ class Project {
 
     get tasks() {
         return this.#tasks;
+    }
+
+    get isOpen() {
+        return this.#isOpen;
+    }
+
+    set isOpen(value) {
+        this.#isOpen = value;
+    }
+
+    toggleOpenStatus() {
+        this.#isOpen = !this.#isOpen;
     }
 
     addTask(title, description, dueDate, priority) {
