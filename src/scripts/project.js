@@ -11,6 +11,7 @@ class Project {
         this.#id = crypto.randomUUID();
         this.#name = name;
         this.#tasks = [];
+        // Any project with isOpen set to true will be displayed.
         this.#isOpen = true;
     }
 
