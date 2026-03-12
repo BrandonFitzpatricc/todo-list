@@ -55,7 +55,8 @@ function createProjectDisplay(project) {
             projectDisplay.appendChild(taskGroup);
 
             taskGroup.append(createElement("div", format(date, "MMMM dd yyyy"),
-                new Attribute("class", "date-heading")), createElement("hr", "")
+                new Attribute("class", "group-date")), 
+                createElement("hr", "")
             );
         }
 
