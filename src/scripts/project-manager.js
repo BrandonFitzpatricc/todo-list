@@ -33,6 +33,7 @@ const openAllProjects = () => {
     }
 }
 
+// The output of this function will be read and displayed by the screen controller.
 const getOpenProjects = () => {
     return projects.filter(project => project.isOpen);
 }
