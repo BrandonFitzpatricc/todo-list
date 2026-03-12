@@ -1,16 +1,16 @@
 class Task {
     #id;
-    #title;
+    #name;
     #description;
-    #dueDate;
+    #date;
     #priority;
     #isComplete;
 
-    constructor(title, description, dueDate, priority) {
+    constructor(name, description, date, priority) {
         this.#id = crypto.randomUUID();
-        this.#title = title;
+        this.#name = name;
         this.#description = description;
-        this.#dueDate = new Date(dueDate);
+        this.#date = new Date(date);
         this.#priority = priority;
         this.#isComplete = false;
     }
@@ -19,16 +19,16 @@ class Task {
         return this.#id;
     }
 
-    get title() {
-        return this.#title;
+    get name() {
+        return this.#name;
     }
 
     get description() {
         return this.#description;
     }
 
-    get dueDate() {
-        return this.#dueDate;
+    get date() {
+        return this.#date;
     }
 
     get priority() {
@@ -39,10 +39,10 @@ class Task {
         return this.isComplete;
     }
 
-    edit(title, description, dueDate, priority) {
-        this.#title = title;
+    edit(name, description, date, priority) {
+        this.#name = name;
         this.#description = description;
-        this.#dueDate = dueDate;
+        this.#date = date;
         this.#priority = priority;
     }
 

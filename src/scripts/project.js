@@ -39,8 +39,8 @@ class Project {
         this.#isOpen = !this.#isOpen;
     }
 
-    addTask(title, description, dueDate, priority) {
-        this.#tasks.push(new Task(title, description, dueDate, priority));
+    addTask(name, description, date, priority) {
+        this.#tasks.push(new Task(name, description, date, priority));
     }
 
     deleteTask(id) {
@@ -51,10 +51,10 @@ class Project {
         this.#tasks.find(task => task.id === id);
     }
 
-    // Tasks are sorted by due date before being displayed so that they can be
+    // Tasks are sorted by date before being displayed so that they can be
     // grouped by these dates. Each date group is displayed in order.
     sortTasks() {
-        return this.#tasks.sort((task1, task2) => compareAsc(task1.dueDate, task2.dueDate));
+        return this.#tasks.sort((task1, task2) => compareAsc(task1.date, task2.date));
     }
 }
 
