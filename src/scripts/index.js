@@ -14,4 +14,6 @@ projects[1].addTask("Task 1", "Description", "Mar 09 2026", "important");
 projects[1].addTask("Task 2", "Description", "Mar 08 2026", "semi-important");
 projects[1].addTask("Task 3", "Description", "Mar 08 2026", "not-important");
 
+document.querySelector("#add-task-dialog").showModal();
+
 displayOpenProjects();
