@@ -15,6 +15,9 @@ const findProject = (id) => {
 }
 
 const toggleProject = (id) => {
+    // If every project is currently open when this function is run, then that means
+    // an individual project is being opened. Therefore, every project must be closed
+    // before opening the target project.
     if(allProjectsOpen) {
         projects.forEach(project => project.toggleOpenStatus());
         allProjectsOpen = false;
@@ -24,8 +27,10 @@ const toggleProject = (id) => {
 }
 
 const openAllProjects = () => {
-    projects.forEach(project => project.isOpen = true);
-    allProjectsOpen = true;
+    if(!allProjectsOpen) {
+        projects.forEach(project => project.isOpen = true);
+        allProjectsOpen = true;
+    }
 }
 
 const getOpenProjects = () => {
