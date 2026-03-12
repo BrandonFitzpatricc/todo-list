@@ -50,6 +50,8 @@ class Project {
         this.#tasks.find(task => task.id === id);
     }
 
+    // Tasks are sorted by due date before being displayed so that they can be
+    // grouped by these dates. Each date group is displayed in order.
     sortTasks() {
         return this.#tasks.sort((task1, task2) => compareAsc(task1.dueDate, task2.dueDate));
     }
