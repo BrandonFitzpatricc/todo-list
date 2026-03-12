@@ -282,6 +282,7 @@ select {
         }
 
         input, .task-description, .add-task-btn {
+            border: 1px solid #5d5c5c;
             box-shadow: 2px 2px 2px #5d5c5c;
         }
 
