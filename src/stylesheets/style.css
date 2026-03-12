@@ -166,10 +166,10 @@ select {
         width: 90%;
         margin: 0 auto;
 
-        & .tasks {
+        & .task-group {
             font-size: 22px;
 
-            & + .tasks {
+            & + .task-group {
                 margin-top: 50px;
             }
 
