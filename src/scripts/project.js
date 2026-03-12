@@ -26,10 +26,6 @@ class Project {
         this.#name = value;
     }
 
-    get tasks() {
-        return this.#tasks;
-    }
-
     get isOpen() {
         return this.#isOpen;
     }
