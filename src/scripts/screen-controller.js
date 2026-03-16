@@ -17,7 +17,10 @@ const displayOpenProjects = () => {
 }
 
 function createProjectDisplay(project) {
-    const projectDisplay = createElement("div", "", new Attribute("class", "project"));
+    const projectDisplay = createElement("div", "", 
+        new Attribute("class", "project"),
+        new Attribute("data-id", project.id)
+    );
 
     const projectHeading = createElement("div", "", 
         new Attribute("class", "heading project-heading")
