@@ -54,10 +54,10 @@ function createProjectDisplay(project) {
 
             projectDisplay.appendChild(taskGroup);
 
-            taskGroup.append(createElement("div", format(date, "MMMM dd yyyy"),
-                new Attribute("class", "group-date")), 
-                createElement("hr", "")
-            );
+            const taskGroupHeading = createElement("div", format(date, "MMMM dd yyyy"),
+                new Attribute("class", "group-date"));
+
+            taskGroup.append(taskGroupHeading, createElement("hr", ""));
         }
 
         taskGroup.append(createTaskDisplay(task), createElement("hr", ""));
