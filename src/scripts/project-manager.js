@@ -33,7 +33,14 @@ const openAllProjects = () => {
     }
 }
 
-// The output of this function will be read and displayed by the screen controller.
+// The output of this function will be read by the screen controller and used for
+// creating project tabs
+const getAllProjects = () => {
+    return projects;
+}
+
+// The output of this function will be read by the screen controller
+// and used for displaying projects.
 const getOpenProjects = () => {
     return projects.filter(project => project.isOpen);
 }
@@ -41,4 +48,4 @@ const getOpenProjects = () => {
 const maxProjects = () => projects.length > 15;
 
 export { projects, addProject, deleteProject, findProject, toggleProject, 
-         openAllProjects, getOpenProjects, maxProjects };
+         openAllProjects, getAllProjects, getOpenProjects, maxProjects };
