@@ -2,17 +2,26 @@ import addTask from "../icons/add-task.svg";
 import edit from "../icons/edit.svg"
 import trashCan from "../icons/delete.svg";
 import expandTask from "../icons/expand-task.svg";
+import projectFolder from "../icons/project-folder.svg";
 
 import { format } from "date-fns";
 
-import { getOpenProjects } from "./project-manager.js";
+import { getAllProjects, getOpenProjects } from "./project-manager.js";
 import { createElement, Attribute } from "./element-factory.js";
 
 const mainContent = document.querySelector("#main-content");
+const tabContainer = document.querySelector("#tabs");
 
 const displayOpenProjects = () => {
     getOpenProjects().forEach(project => {
         mainContent.appendChild(createProjectDisplay(project));
+    });
+}
+
+const displayProjectTabs = () => {
+    getAllProjects().forEach(project => {
+        tabContainer.insertBefore(createProjectTab(project), 
+        document.querySelector("#new-project"));
     });
 }
 
@@ -106,4 +115,23 @@ function createIconBtn(filePath, altText) {
     return btn;
 }
 
-export { displayOpenProjects };
+function createProjectTab(project) {
+    const tab = createIconBtn(projectFolder, "icon of a folder");
+    tab.className = "tab project";
+    tab.dataset.id = project.id;
+
+    // The project name is created as an input rather than a div to allow it to be editable.
+    const projectName = createElement("input", "", 
+        new Attribute("class", "name project-name"),
+        new Attribute("type", "text"),
+        new Attribute("value", project.name),
+        new Attribute("maxlength", "24"),
+        new Attribute("readonly")
+    );
+
+    tab.appendChild(projectName);
+
+    return tab;
+}
+
+export { displayOpenProjects, displayProjectTabs };
