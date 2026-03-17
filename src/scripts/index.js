@@ -2,7 +2,8 @@ import "../stylesheets/custom-reset.css";
 import "../stylesheets/style.css";
 
 import { projects, addProject } from "./project-manager.js";
-import { displayProjectTabs, displayOpenProjects } from "./screen-controller.js";
+import { displayOpenProjects } from "./main-content-controller.js";
+import { displayProjectTabs } from "./sidebar-controller.js";
 
 addProject("Project 1");
 projects[0].addTask("Task 1", "Description", "Mar 07 2026", "important");
