@@ -6,6 +6,7 @@ body {
 
 * {
     color: #5d5c5c;
+    pointer-events: none;
 }
 
 .icon {
@@ -18,6 +19,7 @@ button {
     border-style: none;
     background-color: inherit;
     cursor: pointer;
+    pointer-events: auto;
 }
 
 textarea {
