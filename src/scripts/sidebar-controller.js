@@ -2,13 +2,13 @@ import { createProjectTab } from "./element-factory.js";
 
 import { displayOpenProjects } from "./main-content-controller.js";
 
-import { toggleProject, openAllProjects, getAllProjects } from "./project-manager.js";
+import { toggleProject, toggleAllProjects, getAllProjects } from "./project-manager.js";
 
 const tabContainer = document.querySelector("#tabs");
 
 const displayProjectTabs = () => {
     getAllProjects().forEach(project => {
-        tabContainer.insertBefore(createProjectTab(project), 
+        tabContainer.insertBefore(createProjectTab(project, true), 
             document.querySelector("#new-project"));
     });
 }
@@ -17,18 +17,17 @@ tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
     if(tab.id === "my-projects") {
-        openAllProjects();
+        toggleAllProjects();
 
-        toggleTabSelection(tab, "on");
         tabContainer.querySelectorAll(".tab.project").forEach(projectTab => {
             toggleTabSelection(projectTab, "off");
         });
     } else {
         toggleTabSelection(document.querySelector("#my-projects"), "off");
         toggleProject(event.target.dataset.id);
-        toggleTabSelection(tab);
     }
 
+    toggleTabSelection(tab);
     displayOpenProjects();
 });
 

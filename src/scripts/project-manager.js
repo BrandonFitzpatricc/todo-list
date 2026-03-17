@@ -19,18 +19,18 @@ const toggleProject = (id) => {
     // an individual project is being opened. Therefore, every project must be closed
     // before opening the target project.
     if(allProjectsOpen) {
-        projects.forEach(project => project.toggleOpenStatus());
+        projects.forEach(project => project.toggleOpenStatus("closed"));
         allProjectsOpen = false;
     }
 
     findProject(id).toggleOpenStatus();
 }
 
-const openAllProjects = () => {
-    if(!allProjectsOpen) {
-        projects.forEach(project => project.toggleOpenStatus("open"));
-        allProjectsOpen = true;
-    }
+const toggleAllProjects = () => {
+    projects.forEach(project => {
+        project.toggleOpenStatus(allProjectsOpen ? "closed" : "open")
+    });
+    allProjectsOpen = !allProjectsOpen;
 }
 
 // The output of this function will be read by the screen controller and used for
@@ -48,4 +48,4 @@ const getOpenProjects = () => {
 const maxProjects = () => projects.length > 15;
 
 export { projects, addProject, deleteProject, findProject, toggleProject, 
-         openAllProjects, getAllProjects, getOpenProjects, maxProjects };
+         toggleAllProjects, getAllProjects, getOpenProjects, maxProjects };
