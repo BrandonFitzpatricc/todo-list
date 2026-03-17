@@ -28,7 +28,7 @@ const toggleProject = (id) => {
 
 const openAllProjects = () => {
     if(!allProjectsOpen) {
-        projects.forEach(project => project.isOpen = true);
+        projects.forEach(project => project.toggleOpenStatus("open"));
         allProjectsOpen = true;
     }
 }

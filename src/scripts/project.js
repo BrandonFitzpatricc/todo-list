@@ -31,12 +31,12 @@ class Project {
         return this.#isOpen;
     }
 
-    set isOpen(value) {
-        this.#isOpen = value;
-    }
-
-    toggleOpenStatus() {
-        this.#isOpen = !this.#isOpen;
+    // openStatus can be used to strictly toggle the project either open or closed. If this
+    // parameter is omitted, the project will either be toggled open or closed depending on its 
+    // current status.
+    toggleOpenStatus(openStatus) {
+        if(openStatus) this.#isOpen = openStatus === "open" ? true : false;
+        else this.#isOpen = !this.#isOpen;
     }
 
     addTask(name, description, date, priority) {
