@@ -154,6 +154,7 @@ select {
         background-color: var(--secondary-color);
         border-radius: 25px;
         cursor: pointer;
+        pointer-events: auto;
 
         &:checked::before {
             content: "⬤";
