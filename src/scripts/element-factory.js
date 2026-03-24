@@ -38,18 +38,20 @@ function createProjectDisplay(project) {
     // Tasks within a project display are grouped by date. A task group will be created
     // for each unique date within the tasks, and every task sharing that date will be 
     // added to the group.
-    let date = new Date(), taskGroup;
+    let date = new Date();
+    let taskGroup;
+
     project.sortTasks().forEach(task => {
-        if(task.date.toDateString() !== date.toDateString()) {
+        const isNewDate = task.date.toDateString() !== date.toDateString()
+        if(isNewDate) {
             date = task.date;
 
             taskGroup = createElement("div", "", new Attribute("class", "task-group"));
-
             projectDisplay.appendChild(taskGroup);
 
             const taskGroupHeading = createElement("div", format(date, "MMMM dd yyyy"),
                 new Attribute("class", "group-date"));
-
+                
             taskGroup.append(taskGroupHeading, createElement("hr", ""));
         }
 
@@ -60,7 +62,10 @@ function createProjectDisplay(project) {
 }
 
 function createTaskDisplay(task) {
-    const taskDisplay = createElement("div", "", new Attribute("class", "task"));
+    const taskDisplay = createElement("div", "", 
+        new Attribute("class", "task"),
+        new Attribute("data-id", task.id)
+    );
 
     const checkbox = createElement("input", "",
         new Attribute("class", task.priority),
@@ -80,7 +85,7 @@ function createTaskDisplay(task) {
     return taskDisplay;
 }
 
-function createProjectTab(project) {
+function createProjectTab(project, isReadOnly) {
     const tab = createIconBtn(projectFolder, "icon of a folder");
     tab.className = "tab project";
     tab.dataset.id = project.id;
@@ -91,8 +96,9 @@ function createProjectTab(project) {
         new Attribute("type", "text"),
         new Attribute("value", project.name),
         new Attribute("maxlength", "24"),
-        new Attribute("readonly")
     );
+
+    projectName.readOnly = isReadOnly;
 
     tab.appendChild(projectName);
 

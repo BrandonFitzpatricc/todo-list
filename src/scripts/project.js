@@ -31,9 +31,9 @@ class Project {
         return this.#isOpen;
     }
 
-    // openStatus can be used to strictly toggle the project either open or closed. If this
-    // parameter is omitted, the project will either be toggled open or closed depending on its 
-    // current status.
+    // openStatus can be used to strictly toggle the project either open or closed. 
+    // If this parameter is omitted, the project's current open status will be 
+    // switched to either open or closed.
     toggleOpenStatus(openStatus) {
         if(openStatus) this.#isOpen = openStatus === "open" ? true : false;
         else this.#isOpen = !this.#isOpen;

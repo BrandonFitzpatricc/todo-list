@@ -26,20 +26,22 @@ const toggleProject = (id) => {
     findProject(id).toggleOpenStatus();
 }
 
+// This function will run when the "My Projects" tab is selected
 const toggleAllProjects = () => {
     projects.forEach(project => {
         project.toggleOpenStatus(allProjectsOpen ? "closed" : "open")
     });
+
     allProjectsOpen = !allProjectsOpen;
 }
 
-// The output of this function will be read by the screen controller and used for
+// The output of this function will be read by the sidebar controller and used for
 // creating project tabs
 const getAllProjects = () => {
     return projects;
 }
 
-// The output of this function will be read by the screen controller
+// The output of this function will be read by the main content controller
 // and used for displaying projects.
 const getOpenProjects = () => {
     return projects.filter(project => project.isOpen);

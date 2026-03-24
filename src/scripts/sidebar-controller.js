@@ -8,14 +8,18 @@ const tabContainer = document.querySelector("#tabs");
 
 const displayProjectTabs = () => {
     getAllProjects().forEach(project => {
-        tabContainer.insertBefore(createProjectTab(project, true), 
-            document.querySelector("#new-project"));
+        tabContainer.insertBefore(
+            createProjectTab(project, true), 
+            document.querySelector("#new-project")
+        );
     });
 }
 
 tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
+    // Three possible tab options - The "My Projects" tab, an individual project tab,
+    // or the "New Project" tab.
     if(tab.id === "my-projects") {
         toggleAllProjects();
 
@@ -33,7 +37,7 @@ tabContainer.addEventListener("click", (event) => {
 
 // Tabs that are turned on have the "selected" class applied to them, which highlights the tab.
 // selectionStatus can be used to strictly toggle the tab either on or off. If this parameter
-// is omitted, the tab will either be toggled on or off depending on its current status. 
+// is omitted, the tab's selection status will be switched to either open or closed.
 function toggleTabSelection(tab, selectionStatus) {
     if(selectionStatus === "on" && tab.className.split(" ").at(-1) !== "selected") {
         tab.className = `${tab.className} selected`

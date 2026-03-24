@@ -1,6 +1,6 @@
-import { createProjectDisplay, createProjectTab } from "./element-factory.js";
+import { createProjectDisplay } from "./element-factory.js";
 
-import { getAllProjects, getOpenProjects } from "./project-manager.js";
+import { getOpenProjects } from "./project-manager.js";
 
 const mainContent = document.querySelector("#main-content");
 
