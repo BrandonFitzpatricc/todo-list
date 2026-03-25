@@ -22,8 +22,11 @@ const displayProjectTabs = () => {
 tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
-    if(tab.id !== "new-project") selectProjectTab(tab);
-    else if(!atMaxProjects()) createNewProject();
+    if(tab.id !== "new-project") {
+        selectProjectTab(tab);
+    } else if(!atMaxProjects()) {
+        createNewProject();
+    }
 });
 
 function createNewProject() {
@@ -47,6 +50,12 @@ function createNewProject() {
             // this callback function does not run twice.
             projectNameInput.removeEventListener("blur", submitProjectName);
             displayProjectTabs();
+
+            // The project that was just created should be automatically opened individually.
+            toggleAllProjects("closed");
+            const projectTabs = tabContainer.querySelectorAll(".project");
+            selectProjectTab(projectTabs[projectTabs.length - 1]);
+
             if(atMaxProjects()) newProjectTab.className += " hidden";
         }
     }

@@ -35,8 +35,11 @@ class Project {
     // If this parameter is omitted, the project's current open status will be 
     // switched to either open or closed.
     toggleOpenStatus(openStatus) {
-        if(openStatus) this.#isOpen = openStatus === "open" ? true : false;
-        else this.#isOpen = !this.#isOpen;
+        if(openStatus) {
+            this.#isOpen = openStatus === "open" ? true : false;
+        } else {
+            this.#isOpen = !this.#isOpen;
+        }
     }
 
     addTask(name, description, date, priority) {

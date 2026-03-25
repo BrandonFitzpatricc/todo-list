@@ -26,10 +26,16 @@ const toggleProject = (id) => {
     findProject(id).toggleOpenStatus();
 }
 
-// This function will run when the "My Projects" tab is selected
-const toggleAllProjects = () => {
+// openStatus can be used to strictly toggle all projects either open or closed. 
+// If this parameter is omitted, the projects will either be opened or closed
+// depending on whether or not every project is open
+const toggleAllProjects = (openStatus) => {
     projects.forEach(project => {
-        project.toggleOpenStatus(allProjectsOpen ? "closed" : "open")
+        if(openStatus) {
+            project.toggleOpenStatus(openStatus);
+        } else {
+            project.toggleOpenStatus(allProjectsOpen ? "closed" : "open");
+        }
     });
 
     allProjectsOpen = !allProjectsOpen;
