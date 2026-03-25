@@ -171,17 +171,13 @@ select {
 
     & .project {
         width: 90%;
-        margin: 0 auto;
+        margin: 0 auto 75px auto;
 
         & .task-group {
             font-size: 22px;
 
             & + .task-group {
                 margin-top: 50px;
-            }
-
-            &:last-child {
-                margin-bottom: 75px;
             }
 
             & .group-date {
