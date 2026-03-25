@@ -85,20 +85,26 @@ function createTaskDisplay(task) {
     return taskDisplay;
 }
 
-function createProjectTab(project, isReadOnly) {
+// Note: project tabs can be created without passing in a project object. The purpose
+// of these tabs is to provide a clean interface for users to enter a project name.
+function createProjectTab(project) {
     const tab = createIconBtn(projectFolder, "icon of a folder");
     tab.className = "tab project";
-    tab.dataset.id = project.id;
+    tab.dataset.id = project ? project.id : "";
 
     // The project name is created as an input rather than a div to allow it to be editable.
     const projectName = createElement("input", "", 
         new Attribute("class", "name project-name"),
         new Attribute("type", "text"),
-        new Attribute("value", project.name),
+        new Attribute("value", project ? project.name: ""),
         new Attribute("maxlength", "24"),
+        new Attribute("readonly")
     );
 
-    projectName.readOnly = isReadOnly;
+    if(!project) {
+        projectName.readOnly = false;
+        tab.disabled = true;
+    }
 
     tab.appendChild(projectName);
 

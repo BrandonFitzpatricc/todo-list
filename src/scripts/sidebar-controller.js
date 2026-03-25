@@ -2,11 +2,15 @@ import { createProjectTab } from "./element-factory.js";
 
 import { displayOpenProjects } from "./main-content-controller.js";
 
-import { toggleProject, toggleAllProjects, getAllProjects } from "./project-manager.js";
+import { addProject, toggleProject, toggleAllProjects, getAllProjects } from "./project-manager.js";
 
 const tabContainer = document.querySelector("#tabs");
 
 const displayProjectTabs = () => {
+    tabContainer.querySelectorAll(".project").forEach(projectTab => {
+        tabContainer.removeChild(projectTab)
+    });
+
     getAllProjects().forEach(project => {
         tabContainer.insertBefore(
             createProjectTab(project, true), 
@@ -18,22 +22,52 @@ const displayProjectTabs = () => {
 tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
-    // Three possible tab options - The "My Projects" tab, an individual project tab,
-    // or the "New Project" tab.
-    if(tab.id === "my-projects") {
-        toggleAllProjects();
-
-        tabContainer.querySelectorAll(".tab.project").forEach(projectTab => {
-            toggleTabSelection(projectTab, "off");
-        });
+    // Three possible tab options - The "New Project" tab, the "My Projects" tab,
+    // or an individual project tab.
+    if(tab.id === "new-project") {
+        createNewProject();
     } else {
-        toggleTabSelection(document.querySelector("#my-projects"), "off");
-        toggleProject(event.target.dataset.id);
-    }
+        if(tab.id === "my-projects") {
+            toggleAllProjects();
 
-    toggleTabSelection(tab);
-    displayOpenProjects();
+            tabContainer.querySelectorAll(".tab.project").forEach(projectTab => {
+                toggleTabSelection(projectTab, "off");
+            });
+            
+        } else {
+            toggleTabSelection(document.querySelector("#my-projects"), "off");
+            toggleProject(tab.dataset.id);
+        }
+
+        toggleTabSelection(tab);
+        displayOpenProjects();
+    }
 });
+
+function createNewProject() {
+    // newProjectTab is a dummy tab that does not contain any project information.
+    // It simply provides a clean interface for users to enter the name of a new project
+    // and facilitate the creation of that project.
+    const newProjectTab = createProjectTab(null, false);
+    tabContainer.insertBefore(newProjectTab, document.querySelector("#new-project"));
+
+    const projectNameInput = newProjectTab.querySelector(".project-name");
+    projectNameInput.focus();
+    ["blur", "keydown"].forEach(eventType => {
+        projectNameInput.addEventListener(eventType, submitProjectName);
+    });
+
+    function submitProjectName(event) {
+        if(event.type === "blur" || event.key === "Enter") {
+            addProject(projectNameInput.value);
+            // Submitting the project name through the enter key will fire a blur event.
+            // Therefore, this event listener is removed after submission to ensure that
+            // this callback function does not run twice.
+            projectNameInput.removeEventListener("blur", submitProjectName);
+            displayProjectTabs();
+        }
+    }
+}
 
 // Tabs that are turned on have the "selected" class applied to them, which highlights the tab.
 // selectionStatus can be used to strictly toggle the tab either on or off. If this parameter
