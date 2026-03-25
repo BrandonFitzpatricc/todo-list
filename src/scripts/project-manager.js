@@ -47,7 +47,7 @@ const getOpenProjects = () => {
     return projects.filter(project => project.isOpen);
 }
 
-const maxProjects = () => projects.length > 15;
+const atMaxProjects = () => projects.length === 15;
 
 export { projects, addProject, deleteProject, findProject, toggleProject, 
-         toggleAllProjects, getAllProjects, getOpenProjects, maxProjects };
+         toggleAllProjects, getAllProjects, getOpenProjects, atMaxProjects };

@@ -1,8 +1,10 @@
 import { createProjectTab } from "./element-factory.js";
 import { displayOpenProjects } from "./main-content-controller.js";
-import { addProject, toggleProject, toggleAllProjects, getAllProjects } from "./project-manager.js";
+import { addProject, toggleProject, toggleAllProjects, 
+         getAllProjects, atMaxProjects } from "./project-manager.js";
 
 const tabContainer = document.querySelector("#tabs");
+const newProjectTab = document.querySelector("#new-project");
 
 const displayProjectTabs = () => {
     tabContainer.querySelectorAll(".project").forEach(projectTab => {
@@ -12,7 +14,7 @@ const displayProjectTabs = () => {
     getAllProjects().forEach(project => {
         tabContainer.insertBefore(
             createProjectTab(project), 
-            document.querySelector("#new-project")
+            newProjectTab
         );
     });
 }
@@ -20,21 +22,18 @@ const displayProjectTabs = () => {
 tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
-    if(tab.id === "new-project") {
-        createNewProject();
-    } else {
-        selectProjectTab(tab);
-    }
+    if(tab.id !== "new-project") selectProjectTab(tab);
+    else if(!atMaxProjects()) createNewProject();
 });
 
 function createNewProject() {
-    // newProjectTab is a dummy tab that does not contain any project information.
+    // projectNameTab is a dummy tab that does not contain any project information.
     // It simply provides a clean interface for users to enter the name of a new project
     // and facilitate the creation of that project.
-    const newProjectTab = createProjectTab(null);
-    tabContainer.insertBefore(newProjectTab, document.querySelector("#new-project"));
+    const projectNameTab = createProjectTab(null);
+    tabContainer.insertBefore(projectNameTab, document.querySelector("#new-project"));
 
-    const projectNameInput = newProjectTab.querySelector(".project-name");
+    const projectNameInput = projectNameTab.querySelector(".project-name");
     projectNameInput.focus();
     ["blur", "keydown"].forEach(eventType => {
         projectNameInput.addEventListener(eventType, submitProjectName);
@@ -48,6 +47,7 @@ function createNewProject() {
             // this callback function does not run twice.
             projectNameInput.removeEventListener("blur", submitProjectName);
             displayProjectTabs();
+            if(atMaxProjects()) newProjectTab.className += " hidden";
         }
     }
 }

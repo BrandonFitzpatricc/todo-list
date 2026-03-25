@@ -116,6 +116,10 @@ select {
                     outline: none;
                 }
             }
+
+            &.new-project.hidden {
+                visibility: hidden;
+            }
         }
     }
 }
