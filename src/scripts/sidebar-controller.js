@@ -22,25 +22,10 @@ const displayProjectTabs = () => {
 tabContainer.addEventListener("click", (event) => {
     const tab = event.target;
 
-    // Three possible tab options - The "New Project" tab, the "My Projects" tab,
-    // or an individual project tab.
     if(tab.id === "new-project") {
         createNewProject();
     } else {
-        if(tab.id === "my-projects") {
-            toggleAllProjects();
-
-            tabContainer.querySelectorAll(".tab.project").forEach(projectTab => {
-                toggleTabSelection(projectTab, "off");
-            });
-            
-        } else {
-            toggleTabSelection(document.querySelector("#my-projects"), "off");
-            toggleProject(tab.dataset.id);
-        }
-
-        toggleTabSelection(tab);
-        displayOpenProjects();
+        selectProjectTab();
     }
 });
 
@@ -67,6 +52,24 @@ function createNewProject() {
             displayProjectTabs();
         }
     }
+}
+
+function selectProjectTab(tab) {
+    if(tab.id === "my-projects") {
+        toggleAllProjects();
+
+        tabContainer.querySelectorAll(".tab.project").forEach(projectTab => {
+            toggleTabSelection(projectTab, "off");
+        });
+        
+    } else {
+        toggleTabSelection(document.querySelector("#my-projects"), "off");
+        toggleProject(tab.dataset.id);
+    }
+
+    toggleTabSelection(tab);
+    displayOpenProjects();
+
 }
 
 // Tabs that are turned on have the "selected" class applied to them, which highlights the tab.
