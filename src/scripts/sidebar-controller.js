@@ -1,7 +1,5 @@
 import { createProjectTab } from "./element-factory.js";
-
 import { displayOpenProjects } from "./main-content-controller.js";
-
 import { addProject, toggleProject, toggleAllProjects, getAllProjects } from "./project-manager.js";
 
 const tabContainer = document.querySelector("#tabs");
@@ -13,7 +11,7 @@ const displayProjectTabs = () => {
 
     getAllProjects().forEach(project => {
         tabContainer.insertBefore(
-            createProjectTab(project, true), 
+            createProjectTab(project), 
             document.querySelector("#new-project")
         );
     });
@@ -25,7 +23,7 @@ tabContainer.addEventListener("click", (event) => {
     if(tab.id === "new-project") {
         createNewProject();
     } else {
-        selectProjectTab();
+        selectProjectTab(tab);
     }
 });
 
@@ -33,7 +31,7 @@ function createNewProject() {
     // newProjectTab is a dummy tab that does not contain any project information.
     // It simply provides a clean interface for users to enter the name of a new project
     // and facilitate the creation of that project.
-    const newProjectTab = createProjectTab(null, false);
+    const newProjectTab = createProjectTab(null);
     tabContainer.insertBefore(newProjectTab, document.querySelector("#new-project"));
 
     const projectNameInput = newProjectTab.querySelector(".project-name");

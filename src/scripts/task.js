@@ -8,8 +8,8 @@ class Task {
 
     constructor(name, description, date, priority) {
         this.#id = crypto.randomUUID();
-        this.#name = name;
-        this.#description = description;
+        this.#name = name.trim() ? name : "Task";
+        this.#description = description.trim() ? description: "No Description";
         this.#date = new Date(date);
         this.#priority = priority;
         this.#isComplete = false;
@@ -40,8 +40,8 @@ class Task {
     }
 
     edit(name, description, date, priority) {
-        this.#name = name;
-        this.#description = description;
+        this.#name = name.trim() ? name : "Task";
+        this.#description = description.trim() ? description: "No Description";
         this.#date = date;
         this.#priority = priority;
     }

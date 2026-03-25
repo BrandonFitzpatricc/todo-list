@@ -1,8 +1,8 @@
-import addTask from "../icons/add-task.svg";
-import edit from "../icons/edit.svg"
-import trashCan from "../icons/delete.svg";
-import expandTask from "../icons/expand-task.svg";
-import projectFolder from "../icons/project-folder.svg";
+import addTaskIcon from "../icons/add-task.svg";
+import editIcon from "../icons/edit.svg"
+import trashCanIcon from "../icons/delete.svg";
+import expandTaskIcon from "../icons/expand-task.svg";
+import projectFolderIcon from "../icons/project-folder.svg";
 
 import { format } from "date-fns";
 
@@ -25,11 +25,11 @@ function createProjectDisplay(project) {
         new Attribute("readonly")
     );
 
-    const addTaskBtn = createIconBtn(addTask, "icon of a plus sign inside of a circle");
+    const addTaskBtn = createIconBtn(addTaskIcon, "icon of a plus sign inside of a circle");
 
-    const editProjectBtn = createIconBtn(edit, "icon of a pen");
+    const editProjectBtn = createIconBtn(editIcon, "icon of a pen");
 
-    const deleteProjectBtn = createIconBtn(trashCan, "icon of a trash can");
+    const deleteProjectBtn = createIconBtn(trashCanIcon, "icon of a trash can");
 
     projectHeading.append(projectName, addTaskBtn, editProjectBtn, deleteProjectBtn);
 
@@ -76,9 +76,9 @@ function createTaskDisplay(task) {
         new Attribute("class", "task-name")
     );
 
-    const expandTaskBtn = createIconBtn(expandTask, "view and edit icon");
+    const expandTaskBtn = createIconBtn(expandTaskIcon, "view and edit icon");
 
-    const deleteTaskBtn = createIconBtn(trashCan, "icon of a trash can");
+    const deleteTaskBtn = createIconBtn(trashCanIcon, "icon of a trash can");
 
     taskDisplay.append(checkbox, taskName, expandTaskBtn, deleteTaskBtn);
 
@@ -88,7 +88,7 @@ function createTaskDisplay(task) {
 // Note: project tabs can be created without passing in a project object. The purpose
 // of these tabs is to provide a clean interface for users to enter a project name.
 function createProjectTab(project) {
-    const tab = createIconBtn(projectFolder, "icon of a folder");
+    const tab = createIconBtn(projectFolderIcon, "icon of a folder");
     tab.className = "tab project";
     tab.dataset.id = project ? project.id : "";
 

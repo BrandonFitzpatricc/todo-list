@@ -9,7 +9,7 @@ class Project {
 
     constructor(name) {
         this.#id = crypto.randomUUID();
-        this.#name = name.trim() ? name : "New Project";
+        this.#name = name.trim() ? name : "Project";
         this.#tasks = [];
         // Any project with isOpen set to true will be displayed.
         this.#isOpen = false;
@@ -24,7 +24,7 @@ class Project {
     }
 
     set name(value) {
-        this.#name = value;
+        this.#name = value.trim() ? value : "Project";
     }
 
     get isOpen() {
