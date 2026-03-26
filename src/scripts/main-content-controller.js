@@ -16,19 +16,24 @@ mainContent.addEventListener("click", (event) => {
     const selectedButton = event.target;
     // The project display corresponding to the button that was selected is stored to
     // indicate which project is being modified, which will be accessed through its ID.
-    const currentProjectDisplay = selectedButton.parentNode.parentNode;
+    const currentProjectDisplay = selectedButton.closest(".project");
 
     if(selectedButton.className === "add-task-btn") {
         openNewTaskForm(currentProjectDisplay);
+
     } else if(selectedButton.className === "edit-project-btn") {
         editProjectName(currentProjectDisplay);
+
     } else if(selectedButton.className === "delete-project-btn") {
         deleteProject(currentProjectDisplay.dataset.id);
         displayOpenProjects();
         displayProjectTabs();
+
+    } else if(selectedButton.className === "delete-task-btn") {
+        const taskDisplay = selectedButton.parentNode;
+        findProject(currentProjectDisplay.dataset.id).deleteTask(taskDisplay.dataset.id);
+        displayOpenProjects();
     }
-
-
 });
 
 function editProjectName(projectDisplay) {
