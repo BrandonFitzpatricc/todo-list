@@ -251,14 +251,14 @@ select {
     }
 }
 
-.add-task-dialog {
+.new-task-dialog {
     border: 2px solid #5d5c5c;
     width: 800px;
     height: 800px;
     justify-self: center;
     align-self: center;
 
-    & .add-task-form {
+    & .new-task-form {
         padding: 25px;
         text-align: center;
 
@@ -274,6 +274,7 @@ select {
         }
 
         & input, textarea, select {
+            pointer-events: auto;
             font-size: 20px;
             width: 100%;
             padding: 5px 10px;

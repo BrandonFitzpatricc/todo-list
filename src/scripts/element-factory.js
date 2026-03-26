@@ -1,10 +1,10 @@
+import { format } from "date-fns";
+
 import addTaskIcon from "../icons/add-task.svg";
 import editIcon from "../icons/edit.svg"
 import trashCanIcon from "../icons/delete.svg";
 import expandTaskIcon from "../icons/expand-task.svg";
 import projectFolderIcon from "../icons/project-folder.svg";
-
-import { format } from "date-fns";
 
 function createProjectDisplay(project) {
     const projectDisplay = createElement("div", "", 
@@ -25,11 +25,20 @@ function createProjectDisplay(project) {
         new Attribute("readonly")
     );
 
-    const addTaskBtn = createIconBtn(addTaskIcon, "icon of a plus sign inside of a circle");
+    const addTaskBtn = createIconBtn(addTaskIcon, 
+        "icon of a plus sign inside of a circle",
+        "add-task-btn"
+    );
 
-    const editProjectBtn = createIconBtn(editIcon, "icon of a pen");
+    const editProjectBtn = createIconBtn(editIcon, 
+        "icon of a pen",
+        "edit-project-btn"
+    );
 
-    const deleteProjectBtn = createIconBtn(trashCanIcon, "icon of a trash can");
+    const deleteProjectBtn = createIconBtn(trashCanIcon, 
+        "icon of a trash can",
+        "delete-project-btn"
+    );
 
     projectHeading.append(projectName, addTaskBtn, editProjectBtn, deleteProjectBtn);
 
@@ -38,7 +47,7 @@ function createProjectDisplay(project) {
     // Tasks within a project display are grouped by date. A task group will be created
     // for each unique date within the tasks, and every task sharing that date will be 
     // added to the group.
-    let date = new Date();
+    let date = new Date(undefined);
     let taskGroup;
 
     project.sortTasks().forEach(task => {
@@ -76,9 +85,9 @@ function createTaskDisplay(task) {
         new Attribute("class", "task-name")
     );
 
-    const expandTaskBtn = createIconBtn(expandTaskIcon, "view and edit icon");
+    const expandTaskBtn = createIconBtn(expandTaskIcon, "view and edit icon", "expand-task-btn");
 
-    const deleteTaskBtn = createIconBtn(trashCanIcon, "icon of a trash can");
+    const deleteTaskBtn = createIconBtn(trashCanIcon, "icon of a trash can", "delete-task-btn");
 
     taskDisplay.append(checkbox, taskName, expandTaskBtn, deleteTaskBtn);
 
@@ -88,8 +97,7 @@ function createTaskDisplay(task) {
 // Note: project tabs can be created without passing in a project object. The purpose
 // of these tabs is to provide a clean interface for users to enter a project name.
 function createProjectTab(project) {
-    const tab = createIconBtn(projectFolderIcon, "icon of a folder");
-    tab.className = "tab project";
+    const tab = createIconBtn(projectFolderIcon, "icon of a folder", "tab project");
     tab.dataset.id = project ? project.id : "";
 
     // The project name is created as an input rather than a div to allow it to be editable.
@@ -111,8 +119,10 @@ function createProjectTab(project) {
     return tab;
 }
 
-function createIconBtn(filePath, altText) {
-    const btn = createElement("button", "");
+function createIconBtn(filePath, altText, className) {
+    const btn = createElement("button", "",
+        new Attribute("class", className)
+    );
 
     const icon = createElement("img", "",
         new Attribute("class", "icon"), 

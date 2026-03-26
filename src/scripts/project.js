@@ -1,5 +1,6 @@
-import { Task } from "./task.js";
 import { compareAsc } from "date-fns";
+
+import { Task } from "./task.js";
 
 class Project {
     #id;

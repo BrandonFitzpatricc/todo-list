@@ -1,3 +1,5 @@
+import { parseISO } from "date-fns";
+
 class Task {
     #id;
     #name;
@@ -10,7 +12,7 @@ class Task {
         this.#id = crypto.randomUUID();
         this.#name = name.trim() ? name : "Task";
         this.#description = description.trim() ? description: "No Description";
-        this.#date = new Date(date);
+        this.#date = parseISO(date);
         this.#priority = priority;
         this.#isComplete = false;
     }

@@ -124,24 +124,24 @@
         </div> -->
     </div>
 
-    <dialog id="add-task-dialog" class="add-task-dialog"closedby="closerequest">
-        <form id="add-task-form" class="add-task-form" action="">
+    <dialog id="new-task-dialog" class="new-task-dialog"closedby="closerequest">
+        <form id="new-task-form" class="new-task-form" action="">
             <div class="form-title">New Task</div>
 
-            <label for="name">Name</label>
-            <input id="name" class="task-name" type="text">
+            <label for="task-name">Name</label>
+            <input id="task-name" class="task-name" type="text" maxlength="25">
 
-            <label for="description">Description</label>
-            <textarea id="description" class="task-description"></textarea>
+            <label for="task-description">Description</label>
+            <textarea id="task-description" class="task-description" maxlength="500"></textarea>
 
-            <label for="date">Date</label>
-            <input id="date" class="task-date" type="date">
+            <label for="task-date">Date</label>
+            <input id="task-date" class="task-date" type="date" value="2026-03-12">
 
-            <label for="priority">Priority</label>
-            <select id="priority" class="task-priority not-important">
-                <option>Not Important</option>
-                <option>Semi Important</option>
-                <option>Important</option>
+            <label for="task-priority">Priority</label>
+            <select id="task-priority" class="task-priority not-important">
+                <option value="not-important">Not Important</option>
+                <option value="semi-important">Semi Important</option>
+                <option value="important">Important</option>
             </select>
 
             <button id="submit-task-btn" class="add-task-btn" type="button">Add Task</button>
