@@ -1,6 +1,6 @@
 import { createProjectDisplay } from "./element-factory.js";
 import { displayProjectTabs } from "./sidebar-controller.js";
-import { findProject, getOpenProjects } from "./project-manager.js";
+import { deleteProject, findProject, getOpenProjects } from "./project-manager.js";
 import { openNewTaskForm } from "./form-handler.js";
 
 const mainContent = document.querySelector("#main-content");
@@ -20,11 +20,15 @@ mainContent.addEventListener("click", (event) => {
 
     if(selectedButton.className === "add-task-btn") {
         openNewTaskForm(currentProjectDisplay);
+    } else if(selectedButton.className === "edit-project-btn") {
+        editProjectName(currentProjectDisplay);
+    } else if(selectedButton.className === "delete-project-btn") {
+        deleteProject(currentProjectDisplay.dataset.id);
+        displayOpenProjects();
+        displayProjectTabs();
     }
 
-    if(selectedButton.className === "edit-project-btn") {
-        editProjectName(currentProjectDisplay);
-    }
+
 });
 
 function editProjectName(projectDisplay) {
