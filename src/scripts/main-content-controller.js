@@ -18,27 +18,31 @@ mainContent.addEventListener("click", (event) => {
     // allow that project to be accessed and modified accordingly.
     const selectedProjectDisplay = selectedButton.closest(".project");
     const selectedProject = findProject(selectedProjectDisplay.dataset.id);
-    
-    if(selectedButton.className === "add-task-btn") {
-        openNewTaskForm(selectedProject);
 
-    } else if(selectedButton.className === "edit-project-btn") {
-        editProjectName(selectedProject, selectedProjectDisplay);
+    const buttonHandler = {
+        "add-task-btn": () => openNewTaskForm(selectedProject),
 
-    } else if(selectedButton.className === "delete-project-btn") {
-        deleteProject(selectedProject.id);
-        displayOpenProjects();
-        displayProjectTabs();
+        "edit-project-btn": () => editProjectName(selectedProject, selectedProjectDisplay),
 
-    } else if(selectedButton.className === "delete-task-btn") {
-        const taskDisplay = selectedButton.parentNode;
-        selectedProject.deleteTask(taskDisplay.dataset.id);
-        displayOpenProjects();
+        "delete-project-btn": () => {
+            deleteProject(selectedProject.id);
+            displayOpenProjects();
+            displayProjectTabs();
+        },
 
-    } else if(selectedButton.className === "expand-task-btn") {
-        const taskDisplay = selectedButton.parentNode;
-        displayExpandedTask(selectedProject.findTask(taskDisplay.dataset.id));
+        "delete-task-btn": () => {
+            const taskDisplay = selectedButton.parentNode;
+            selectedProject.deleteTask(taskDisplay.dataset.id);
+            displayOpenProjects();
+        },
+
+        "expand-task-btn": () => {
+            const taskDisplay = selectedButton.parentNode;
+            displayExpandedTask(selectedProject.findTask(taskDisplay.dataset.id));
+        }
     }
+
+    buttonHandler[selectedButton.className]();
 });
 
 function editProjectName(project, projectDisplay) {
