@@ -36,13 +36,8 @@ mainContent.addEventListener("click", (event) => {
         displayOpenProjects();
 
     } else if(selectedButton.className === "expand-task-btn") {
-        mainContent.textContent = "";
         const taskDisplay = selectedButton.parentNode;
-        mainContent.appendChild(
-            createExpandedTaskDisplay(
-                selectedProject.findTask(taskDisplay.dataset.id)
-            )
-        );
+        displayExpandedTask(selectedProject.findTask(taskDisplay.dataset.id));
     }
 });
 
@@ -63,6 +58,13 @@ function editProjectName(project, projectDisplay) {
             }
         });
     });
+}
+
+function displayExpandedTask(task) {
+    mainContent.textContent = "";
+    mainContent.appendChild(
+        createExpandedTaskDisplay(task)
+    );
 }
 
 export { displayOpenProjects };
