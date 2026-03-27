@@ -2,7 +2,7 @@ import "../stylesheets/custom-reset.css";
 import "../stylesheets/style.css";
 
 import { projects, addProject } from "./project-manager.js";
-import { displayOpenProjects } from "./main-content-controller.js";
+import { displayOpenProjects } from "./project-display-controller.js";
 import { displayProjectTabs } from "./sidebar-controller.js";
 
 addProject("Project 1");

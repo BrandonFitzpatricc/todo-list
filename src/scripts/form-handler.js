@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 
-import { displayOpenProjects } from "./main-content-controller.js";
+import { displayOpenProjects } from "./project-display-controller.js";
 
 const newTaskDialog = document.querySelector("#new-task-dialog");
 const newTaskForm = document.querySelector("#new-task-form");

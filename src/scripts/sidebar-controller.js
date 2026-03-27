@@ -1,5 +1,5 @@
 import { createProjectTab } from "./element-factory.js";
-import { displayOpenProjects } from "./main-content-controller.js";
+import { displayOpenProjects } from "./project-display-controller.js";
 import { addProject, toggleProject, toggleAllProjects, 
          getAllProjects, atMaxProjects } from "./project-manager.js";
 
