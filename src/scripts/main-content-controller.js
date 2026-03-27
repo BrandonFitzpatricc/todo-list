@@ -1,4 +1,4 @@
-import { createProjectDisplay } from "./element-factory.js";
+import { createProjectDisplay, createExpandedTaskDisplay } from "./element-factory.js";
 import { displayProjectTabs } from "./sidebar-controller.js";
 import { deleteProject, findProject, getOpenProjects } from "./project-manager.js";
 import { openNewTaskForm } from "./form-handler.js";
@@ -33,6 +33,15 @@ mainContent.addEventListener("click", (event) => {
         const taskDisplay = selectedButton.parentNode;
         findProject(currentProjectDisplay.dataset.id).deleteTask(taskDisplay.dataset.id);
         displayOpenProjects();
+
+    } else if(selectedButton.className === "expand-task-btn") {
+        mainContent.textContent = "";
+        const taskDisplay = selectedButton.parentNode;
+        mainContent.appendChild(
+            createExpandedTaskDisplay(
+                findProject(currentProjectDisplay.dataset.id).findTask(taskDisplay.dataset.id)
+            )
+        );
     }
 });
 

@@ -52,7 +52,7 @@ class Project {
     }
 
     findTask(id) {
-        this.#tasks.find(task => task.id === id);
+        return this.#tasks.find(task => task.id === id);
     }
 
     // Tasks are sorted by date before being displayed so that they can be
