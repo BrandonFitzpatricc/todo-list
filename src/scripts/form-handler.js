@@ -1,6 +1,5 @@
 import { format } from "date-fns";
 
-import { findProject } from "./project-manager.js";
 import { displayOpenProjects } from "./main-content-controller.js";
 
 const newTaskDialog = document.querySelector("#new-task-dialog");
@@ -10,10 +9,10 @@ const taskDescriptionInput = document.querySelector("#task-description");
 const taskDateInput = document.querySelector("#task-date");
 const taskPrioritySelector = document.querySelector("#task-priority");
 
-let currentProjectDisplay;
+let selectedProject;
 
-const openNewTaskForm = (projectDisplay) => {
-    currentProjectDisplay = projectDisplay;
+const openNewTaskForm = (project) => {
+    selectedProject = project
     newTaskForm.reset();
     taskDateInput.defaultValue = format(new Date(), "yyyy-MM-dd");
     newTaskDialog.showModal();
@@ -26,7 +25,7 @@ taskPrioritySelector.addEventListener("change", () => {
 });
 
 document.querySelector("#submit-task-btn").addEventListener("click", () => {
-    findProject(currentProjectDisplay.dataset.id).addTask(
+    selectedProject.addTask(
         taskNameInput.value,
         taskDescriptionInput.value,
         taskDateInput.value,

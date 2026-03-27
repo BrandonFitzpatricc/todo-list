@@ -14,24 +14,25 @@ const displayOpenProjects = () => {
 
 mainContent.addEventListener("click", (event) => {
     const selectedButton = event.target;
-    // The project display corresponding to the button that was selected is stored to
-    // indicate which project is being modified, which will be accessed through its ID.
-    const currentProjectDisplay = selectedButton.closest(".project");
-
+    // The project corresponding to the button that was selected is stored in order to
+    // allow that project to be accessed and modified accordingly.
+    const selectedProjectDisplay = selectedButton.closest(".project");
+    const selectedProject = findProject(selectedProjectDisplay.dataset.id);
+    
     if(selectedButton.className === "add-task-btn") {
-        openNewTaskForm(currentProjectDisplay);
+        openNewTaskForm(selectedProject);
 
     } else if(selectedButton.className === "edit-project-btn") {
-        editProjectName(currentProjectDisplay);
+        editProjectName(selectedProject, selectedProjectDisplay);
 
     } else if(selectedButton.className === "delete-project-btn") {
-        deleteProject(currentProjectDisplay.dataset.id);
+        deleteProject(selectedProject.id);
         displayOpenProjects();
         displayProjectTabs();
 
     } else if(selectedButton.className === "delete-task-btn") {
         const taskDisplay = selectedButton.parentNode;
-        findProject(currentProjectDisplay.dataset.id).deleteTask(taskDisplay.dataset.id);
+        selectedProject.deleteTask(taskDisplay.dataset.id);
         displayOpenProjects();
 
     } else if(selectedButton.className === "expand-task-btn") {
@@ -39,13 +40,13 @@ mainContent.addEventListener("click", (event) => {
         const taskDisplay = selectedButton.parentNode;
         mainContent.appendChild(
             createExpandedTaskDisplay(
-                findProject(currentProjectDisplay.dataset.id).findTask(taskDisplay.dataset.id)
+                selectedProject.findTask(taskDisplay.dataset.id)
             )
         );
     }
 });
 
-function editProjectName(projectDisplay) {
+function editProjectName(project, projectDisplay) {
     const projectNameInput = projectDisplay.querySelector(".project-name");
     projectNameInput.readOnly = false;
 
@@ -56,7 +57,7 @@ function editProjectName(projectDisplay) {
     ["blur", "keydown"].forEach(eventType => {
         projectNameInput.addEventListener(eventType, (event) => {
             if(event.type === "blur" || event.key === "Enter") {
-                findProject(projectDisplay.dataset.id).name = projectNameInput.value;
+                project.name = projectNameInput.value;
                 projectNameInput.readOnly = true;
                 displayProjectTabs();
             }
