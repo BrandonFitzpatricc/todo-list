@@ -44,7 +44,7 @@ class Task {
     edit(name, description, date, priority) {
         this.#name = name.trim() ? name : "Task";
         this.#description = description.trim() ? description: "No Description";
-        this.#date = date;
+        this.#date = parseISO(date);
         this.#priority = priority;
     }
 

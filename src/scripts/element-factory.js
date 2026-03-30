@@ -74,7 +74,12 @@ function createTaskDisplay(task, className) {
 
     const taskName = createInput("name task-name", "text", task.name, "25")
 
-    const expandTaskBtn = createIconBtn(expandTaskIcon, "view and edit icon", "expand-task-btn");
+    // The class name/functionality of this button will vary depending on whether or not
+    // this task display is being used within a project, or the header of an expanded task.
+    const expandTaskBtn = createIconBtn(
+        className === "task" ? expandTaskIcon : editIcon,
+        className === "task" ? "view and edit icon" : "icon of a pen", 
+        className === "task" ? "expand-task-btn" : "edit-task-btn");
 
     const deleteTaskBtn = createIconBtn(trashCanIcon, "icon of a trash can", "delete-task-btn");
 
@@ -107,7 +112,7 @@ const createExpandedTaskDisplay = (task) => {
     const taskPriorityOptions = [
         createElement("option", "Not Important", new Attribute("value", "not-important")),
         createElement("option", "Semi Important", new Attribute("value", "semi-important")),
-        createElement("option", "Not important", new Attribute("value", "not-important"))
+        createElement("option", "Important", new Attribute("value", "important"))
     ]
 
     taskPriorityOptions.forEach(option => {
@@ -124,13 +129,18 @@ const createExpandedTaskDisplay = (task) => {
         new Attribute("readonly")
     );
 
+    const confirmChangesBtn = createElement("button", "Confirm changes",
+        new Attribute("class", "confirm-changes-btn hidden")
+    );
+
     expandedTaskDisplay.append(
         backBtn, 
         taskHeading, 
         createElement("hr", ""), 
         taskInfo, 
         createElement("hr", ""),
-        taskDescription
+        taskDescription,
+        confirmChangesBtn
     );
 
     return expandedTaskDisplay;

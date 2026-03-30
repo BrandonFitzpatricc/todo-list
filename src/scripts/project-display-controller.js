@@ -19,8 +19,11 @@ mainContent.addEventListener("click", (event) => {
     // allow that project to be accessed and modified accordingly.
     const selectedProjectDisplay = selectedButton.closest(".project");
 
+    // This callback function should only run when a button is selected from a project.
+    // If this returns true, then it means that a button is instead being selected from
+    // an expanded task.
     if(!selectedProjectDisplay) return;
-    
+
     const selectedProject = findProject(selectedProjectDisplay.dataset.id);
 
     const buttonHandler = {

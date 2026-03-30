@@ -15,6 +15,10 @@ body {
     height: auto;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 button {
     border-style: none;
     background-color: inherit;
@@ -116,10 +120,6 @@ select {
                     outline: none;
                 }
             }
-
-            &.new-project.hidden {
-                visibility: hidden;
-            }
         }
     }
 }
@@ -202,12 +202,22 @@ select {
         margin: 0 auto;
         font-size: 22px;
 
-        & .back-btn {
+        & :is(input, textarea):not(:read-only), select:not(:disabled) {
+            pointer-events: auto;
+        }
+
+        & > button {
             border: 1px solid #000000;
             padding: 0 10px;
             margin-bottom: 15px;
             font-weight: bold;
             box-shadow: 2px 2px 2px #5d5c5c;
+        }
+
+        & .confirm-changes-btn {
+            margin: 20px 10px;
+            width: 100%;
+            height: 40px;
         }
 
         & .task-heading {

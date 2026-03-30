@@ -18,6 +18,8 @@ const openNewTaskForm = (project) => {
     newTaskDialog.showModal();
 };
 
+// The selector contains a class that matches its current value. This class changes the color
+// of the selector depending on the value selected.
 taskPrioritySelector.addEventListener("change", () => {
     const selectorClassName = taskPrioritySelector.className;
     taskPrioritySelector.className = selectorClassName
