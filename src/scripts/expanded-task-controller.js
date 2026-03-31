@@ -39,10 +39,17 @@ function attachEventListener() {
             "delete-task-btn": () => {
                 currentProject.deleteTask(currentTask.id);
                 displayOpenProjects();
+            },
+
+            "task-checkbox": () => {
+                const taskDisplay = selectedButton.parentNode;
+                currentProject.findTask(taskDisplay.dataset.id).toggleCompletion();
             }
         }
 
-        buttonHandler[selectedButton.className]();
+        // The first class name of each button will correspond to 
+        // one of the button handler properties.
+        buttonHandler[selectedButton.className.split(" ")[0]]();
     });
 }
 
@@ -80,10 +87,12 @@ function toggleInputs(inputs, toggleStatus) {
         const selectorClassName = taskPrioritySelector.className;
         taskPrioritySelector.className = selectorClassName
             .substring(0, selectorClassName.lastIndexOf(" ")) + 
-                    ` ${taskPrioritySelector.value}`
+                       ` ${taskPrioritySelector.value}`
 
-        currentTaskDisplay.querySelector("input[type='checkbox']")
-            .className = taskPrioritySelector.value;
+        const taskCheckbox = currentTaskDisplay.querySelector(".task-checkbox");
+        taskCheckbox.className = taskCheckbox.className
+            .substring(0, taskCheckbox.className.lastIndexOf(" ")) + 
+                       ` ${taskPrioritySelector.value}`
     }
 
     function stopPropagation(event) {

@@ -38,7 +38,7 @@ class Task {
     }
 
     get isComplete() {
-        return this.isComplete;
+        return this.#isComplete;
     }
 
     edit(name, description, date, priority) {

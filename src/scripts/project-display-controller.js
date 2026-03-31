@@ -46,10 +46,17 @@ mainContent.addEventListener("click", (event) => {
         "expand-task-btn": () => {
             const taskDisplay = selectedButton.parentNode;
             displayExpandedTask(selectedProject, selectedProject.findTask(taskDisplay.dataset.id));
+        },
+
+        "task-checkbox": () => {
+            const taskDisplay = selectedButton.parentNode;
+            selectedProject.findTask(taskDisplay.dataset.id).toggleCompletion();
         }
     }
 
-    buttonHandler[selectedButton.className]();
+    // The first class name of each button will correspond to 
+    // one of the button handler properties.
+    buttonHandler[selectedButton.className.split(" ")[0]]();
 });
 
 function editProjectName(project, projectDisplay) {

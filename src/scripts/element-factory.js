@@ -70,7 +70,8 @@ function createTaskDisplay(task, className) {
         new Attribute("data-id", task.id)
     );
 
-    const checkbox = createInput(task.priority, "checkbox");
+    const checkbox = createInput(`task-checkbox ${task.priority}`, "checkbox");
+    checkbox.checked = task.isComplete;
 
     const taskName = createInput("name task-name", "text", task.name, "25")
 
