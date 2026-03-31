@@ -2,7 +2,7 @@ import { Project } from "./project.js";
 
 let allProjectsOpen = true;
 
-const projects = [];
+const projects = [new Project("Project", true)];
 
 const addProject = (name) => projects.push(new Project(name));
 

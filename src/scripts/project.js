@@ -8,12 +8,12 @@ class Project {
     #tasks;
     #isOpen;
 
-    constructor(name) {
+    constructor(name, isOpen) {
         this.#id = crypto.randomUUID();
         this.#name = name.trim() ? name : "Project";
         this.#tasks = [];
         // Any project with isOpen set to true will be displayed.
-        this.#isOpen = false;
+        this.#isOpen = isOpen;
     }
 
     get id() {
