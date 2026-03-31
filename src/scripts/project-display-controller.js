@@ -45,7 +45,7 @@ mainContent.addEventListener("click", (event) => {
 
         "expand-task-btn": () => {
             const taskDisplay = selectedButton.parentNode;
-            displayExpandedTask(selectedProject.findTask(taskDisplay.dataset.id));
+            displayExpandedTask(selectedProject, selectedProject.findTask(taskDisplay.dataset.id));
         }
     }
 

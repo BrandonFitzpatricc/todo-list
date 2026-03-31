@@ -1,10 +1,12 @@
 import { createExpandedTaskDisplay } from "./element-factory";
 import { displayOpenProjects } from "./project-display-controller";
 
+let currentProject
 let currentTask;
 let currentTaskDisplay;
 
-const displayExpandedTask = (task) => {
+const displayExpandedTask = (project, task) => {
+    currentProject = project;
     currentTask = task;
     currentTaskDisplay = createExpandedTaskDisplay(currentTask);
     attachEventListener()
@@ -32,6 +34,11 @@ function attachEventListener() {
 
                 toggleInputs(inputs, "enabled");
                 enableConfirmBtn(inputs);
+            },
+
+            "delete-task-btn": () => {
+                currentProject.deleteTask(currentTask.id);
+                displayOpenProjects();
             }
         }
 
