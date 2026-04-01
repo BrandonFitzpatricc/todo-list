@@ -16,7 +16,7 @@ class Project {
         this.isOpen = isOpen;
     }
 
-    set name(value) {
+    setName(value) {
         this.name = value.trim() ? value : "Project";
     }
 

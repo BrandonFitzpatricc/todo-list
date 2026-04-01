@@ -11,15 +11,15 @@ class Task {
     constructor(name, description, date, priority) {
         this.id = crypto.randomUUID();
         this.name = name.trim() ? name : "Task";
-        this.description = description.trim() ? description: "No Description";
+        this.description = description.trim() ? description : "No Description";
         this.date = parseISO(date);
         this.priority = priority;
         this.isComplete = false;
     }
 
     edit(name, description, date, priority) {
-        this.name = name.trim() ? name : "Task";
-        this.description = description.trim() ? description: "No Description";
+        this.name = name;
+        this.description = description;
         this.date = parseISO(date);
         this.priority = priority;
     }

@@ -70,6 +70,9 @@ function editProjectName(project, projectDisplay) {
     ["blur", "keydown"].forEach(eventType => {
         projectNameInput.addEventListener(eventType, (event) => {
             if(event.type === "blur" || event.key === "Enter") {
+                projectNameInput.value = projectNameInput.value.trim() ? 
+                                         projectNameInput.value : "Project";
+
                 project.name = projectNameInput.value;
                 projectNameInput.readOnly = true;
                 displayProjectTabs();

@@ -113,6 +113,10 @@ function enableConfirmBtn(inputs) {
                 taskPrioritySelector,
                 taskDescriptionInput] = inputs;
 
+        taskNameInput.value = taskNameInput.value.trim() ? taskNameInput.value : "Task";
+        taskDescriptionInput.value = taskDescriptionInput.value.trim() ? 
+                                     taskDescriptionInput.value : "No Description";
+
         currentTask.edit(
             taskNameInput.value, 
             taskDescriptionInput.value, 
