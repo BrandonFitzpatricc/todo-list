@@ -8,11 +8,11 @@ let allProjectsOpen;
 let projects = [new Project("Project", true)];
 
 const saveProjects = () => {
-    if(storageAvailable) localStorage.setItem("projects", JSON.stringify(projects));
+    if(storageAvailable("localStorage")) localStorage.setItem("projects", JSON.stringify(projects));
 };
 
 const loadProjects = () => {
-    if(storagePopulated) {
+    if(storagePopulated()) {
         projects = JSON.parse(localStorage.getItem("projects"));
 
         // Each object will be parsed from local storage as object literals rather than
