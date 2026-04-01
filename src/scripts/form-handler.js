@@ -14,7 +14,13 @@ let selectedProject;
 const openNewTaskForm = (project) => {
     selectedProject = project
     newTaskForm.reset();
+
+    const selectorClassName = taskPrioritySelector.className;
+    taskPrioritySelector.className = selectorClassName
+        .substring(0, selectorClassName.lastIndexOf(" ")) + " not-important";
+
     taskDateInput.defaultValue = format(new Date(), "yyyy-MM-dd");
+
     newTaskDialog.showModal();
 };
 

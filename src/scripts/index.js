@@ -5,7 +5,6 @@ import { loadProjects, toggleAllProjects} from "./project-manager.js";
 import { displayOpenProjects } from "./project-display-controller.js";
 import { displayProjectTabs } from "./sidebar-controller.js";
 
-// localStorage.clear();
 loadProjects();
 toggleAllProjects("open");
 displayProjectTabs();
