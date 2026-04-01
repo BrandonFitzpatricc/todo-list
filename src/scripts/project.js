@@ -16,10 +16,6 @@ class Project {
         this.isOpen = isOpen;
     }
 
-    setName(value) {
-        this.name = value.trim() ? value : "Project";
-    }
-
     // openStatus can be used to strictly toggle the project either open or closed. 
     // If this parameter is omitted, the project's current open status will be 
     // switched to either open or closed.
