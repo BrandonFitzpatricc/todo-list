@@ -19,17 +19,20 @@ const createProjectDisplay = (project) => {
     // The project name is created as an input rather than a div to allow it to be editable.
     const projectName = createInput("name project-name", "text", project.name, "24")
 
-    const addTaskBtn = createIconBtn(addTaskIcon, 
+    const addTaskBtn = createIconBtn(
+        addTaskIcon, 
         "icon of a plus sign inside of a circle",
         "add-task-btn"
     );
 
-    const editProjectBtn = createIconBtn(editIcon, 
+    const editProjectBtn = createIconBtn(
+        editIcon, 
         "icon of a pen",
         "edit-project-btn"
     );
 
-    const deleteProjectBtn = createIconBtn(trashCanIcon, 
+    const deleteProjectBtn = createIconBtn(
+        trashCanIcon, 
         "icon of a trash can",
         "delete-project-btn"
     );
@@ -76,7 +79,7 @@ function createTaskDisplay(task, className) {
     const taskName = createInput("name task-name", "text", task.name, "25")
 
     // The class name/functionality of this button will vary depending on whether or not
-    // this task display is being used within a project, or the header of an expanded task.
+    // this task display is being used within a project, or as the header of an expanded task.
     const expandTaskBtn = createIconBtn(
         className === "task" ? expandTaskIcon : editIcon,
         className === "task" ? "view and edit icon" : "icon of a pen", 

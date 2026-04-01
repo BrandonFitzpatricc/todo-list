@@ -89,7 +89,11 @@ select {
             display: flex;
             align-items: center;
 
-            &:hover, &.selected {
+            &:hover {
+                background-color: #b5b5b5 !important;
+            }
+
+            &.selected {
                 background-color: #d3d3d3;
             }
 
