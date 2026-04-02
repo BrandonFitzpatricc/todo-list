@@ -41,6 +41,13 @@ class Task {
         return this.#isComplete;
     }
 
+    edit(name, description, date, priority) {
+        this.#name = name;
+        this.#description = description;
+        this.#date = parseISO(date);
+        this.#priority = priority;
+    }
+
     toggleCompletion() {
         this.isComplete = !this.isComplete;
     }
