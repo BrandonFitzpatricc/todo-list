@@ -78,7 +78,7 @@ const loadProjects = () => {
 
             savedProject.tasks.forEach(task => {
                 task = JSON.parse(task);
-                project.addTask(task.name, task.description, task.date, task.priority);
+                project.addTask(task.name, task.description, task.date, task.priority, task.isComplete);
             });
 
             projects.push(project);

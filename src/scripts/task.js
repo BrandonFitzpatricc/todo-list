@@ -8,13 +8,13 @@ class Task {
     #priority;
     #isComplete;
 
-    constructor(name, description, date, priority) {
+    constructor(name, description, date, priority, isComplete) {
         this.#id = crypto.randomUUID();
         this.#name = name.trim() ? name : "Task";
         this.#description = description.trim() ? description: "No Description";
         this.#date = parseISO(date);
         this.#priority = priority;
-        this.#isComplete = false;
+        this.#isComplete = isComplete;
     }
 
     get id() {

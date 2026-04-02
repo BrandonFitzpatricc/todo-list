@@ -43,8 +43,8 @@ class Project {
         }
     }
 
-    addTask(name, description, date, priority) {
-        this.#tasks.push(new Task(name, description, date, priority));
+    addTask(name, description, date, priority, isComplete) {
+        this.#tasks.push(new Task(name, description, date, priority, isComplete));
     }
 
     deleteTask(id) {
