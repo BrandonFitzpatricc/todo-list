@@ -61,9 +61,11 @@ class Project {
         return this.#tasks.sort((task1, task2) => compareAsc(task1.date, task2.date));
     }
 
+    // Used for saving projects - this stringified object contains all of the information
+    // needed to reconstruct a project object using its constructor
     toJSON() {
         return JSON.stringify(
-            {id: this.#id, name: this.#name, tasks: this.#tasks, isOpen: this.#isOpen}
+            {name: this.#name, tasks: this.#tasks, isOpen: this.#isOpen}
         );
     }
 }

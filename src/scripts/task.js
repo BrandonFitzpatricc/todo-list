@@ -52,10 +52,11 @@ class Task {
         this.#isComplete = !this.#isComplete;
     }
 
+    // Used for saving tasks - this stringified object contains all of the information
+    // needed to reconstruct a task object using its constructor
     toJSON() {
         return JSON.stringify(
             {
-                id: this.#id, 
                 name: this.#name, 
                 description: this.#description, 
                 date: this.#date,
