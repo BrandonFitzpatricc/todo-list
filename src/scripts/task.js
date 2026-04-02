@@ -49,7 +49,7 @@ class Task {
     }
 
     toggleCompletion() {
-        this.isComplete = !this.isComplete;
+        this.#isComplete = !this.#isComplete;
     }
 
     toJSON() {
