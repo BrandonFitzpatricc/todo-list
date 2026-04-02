@@ -48,7 +48,7 @@ const createProjectDisplay = (project) => {
     let taskGroup;
 
     project.sortTasks().forEach(task => {
-        const isNewDate = new Date(task.date).toDateString() !== date.toDateString()
+        const isNewDate = task.date.toDateString() !== date.toDateString()
         if(isNewDate) {
             date = task.date;
 

@@ -3,17 +3,33 @@ import { compareAsc } from "date-fns";
 import { Task } from "./task.js";
 
 class Project {
-    id;
-    name;
-    tasks;
-    isOpen;
+    #id;
+    #name;
+    #tasks;
+    #isOpen;
 
     constructor(name, isOpen) {
-        this.id = crypto.randomUUID();
-        this.name = name.trim() ? name : "Project";
-        this.tasks = [];
+        this.#id = crypto.randomUUID();
+        this.#name = name.trim() ? name : "Project";
+        this.#tasks = [];
         // Any project with isOpen set to true will be displayed.
-        this.isOpen = isOpen;
+        this.#isOpen = isOpen;
+    }
+
+    get id() {
+        return this.#id;
+    }
+
+    get name() {
+        return this.#name;
+    }
+
+    set name(value) {
+        this.#name = value;
+    }
+
+    get isOpen() {
+        return this.#isOpen;
     }
 
     // openStatus can be used to strictly toggle the project either open or closed. 
@@ -21,28 +37,34 @@ class Project {
     // switched to either open or closed.
     toggleOpenStatus(openStatus) {
         if(openStatus) {
-            this.isOpen = openStatus === "open" ? true : false;
+            this.#isOpen = openStatus === "open" ? true : false;
         } else {
-            this.isOpen = !this.isOpen;
+            this.#isOpen = !this.#isOpen;
         }
     }
 
     addTask(name, description, date, priority) {
-        this.tasks.push(new Task(name, description, date, priority));
+        this.#tasks.push(new Task(name, description, date, priority));
     }
 
     deleteTask(id) {
-        this.tasks.splice(this.tasks.findIndex(task => task.id === id), 1);
+        this.#tasks.splice(this.#tasks.findIndex(task => task.id === id), 1);
     }
 
     findTask(id) {
-        return this.tasks.find(task => task.id === id);
+        return this.#tasks.find(task => task.id === id);
     }
 
     // Tasks are sorted by date before being displayed so that they can be
     // grouped by these dates. Each date group is displayed in order.
     sortTasks() {
-        return this.tasks.sort((task1, task2) => compareAsc(task1.date, task2.date));
+        return this.#tasks.sort((task1, task2) => compareAsc(task1.date, task2.date));
+    }
+
+    toJSON() {
+        return JSON.stringify(
+            {id: this.#id, name: this.#name, tasks: this.#tasks, isOpen: this.#isOpen}
+        );
     }
 }
 

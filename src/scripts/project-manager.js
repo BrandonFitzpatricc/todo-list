@@ -1,29 +1,10 @@
 import { Project } from "./project.js";
-import { Task } from "./task.js";
 import { storageAvailable, storagePopulated } from "./storage-handler.js";
 
 let allProjectsOpen;
 
 // Create default project when the program is first run by a new user.
 let projects = [new Project("Project", true)];
-
-const saveProjects = () => {
-    if(storageAvailable("localStorage")) localStorage.setItem("projects", JSON.stringify(projects));
-};
-
-const loadProjects = () => {
-    if(storagePopulated()) {
-        projects = JSON.parse(localStorage.getItem("projects"));
-
-        // Each object will be parsed from local storage as object literals rather than
-        // class objects. Therefore, their class prototypes must be reassigned to give them
-        // access to their methods.
-        projects.forEach(project => {
-            Object.setPrototypeOf(project, Project.prototype);
-            project.tasks.forEach(task => Object.setPrototypeOf(task, Task.prototype));
-        });
-    }
-}
 
 const addProject = (name) => projects.push(new Project(name));
 
@@ -81,5 +62,34 @@ const getOpenProjects = () => {
 
 const atMaxProjects = () => projects.length === 15;
 
-export { saveProjects, loadProjects, addProject, deleteProject, findProject, toggleProject, 
-         toggleAllProjects, getAllProjects, getOpenProjects, atMaxProjects };
+const saveProjects = () => {
+    if(storageAvailable("localStorage")) localStorage.setItem("projects", JSON.stringify(projects));
+}
+
+const loadProjects = () => {
+    if(storagePopulated()) {
+        projects = [];
+        JSON.parse(localStorage.getItem("projects")).forEach(savedProject => {
+            savedProject = JSON.parse(savedProject);
+            const project = new Project(savedProject.name, savedProject.isOpen);
+
+            savedProject.tasks.forEach(task => {
+                task = JSON.parse(task);
+                project.addTask(task.name, task.description, task.date, task.priority);
+            });
+
+            projects.push(project);
+        });
+
+        // // Each object will be parsed from local storage as object literals rather than
+        // // class objects. Therefore, their class prototypes must be reassigned to give them
+        // // access to their methods.
+        // projects.forEach(project => {
+        //     Object.setPrototypeOf(project, Project.prototype);
+        //     project.tasks.forEach(task => Object.setPrototypeOf(task, Task.prototype));
+        // });
+    }
+}
+
+export { addProject, deleteProject, findProject, toggleProject, toggleAllProjects, 
+         getAllProjects, getOpenProjects, atMaxProjects, saveProjects, loadProjects};
