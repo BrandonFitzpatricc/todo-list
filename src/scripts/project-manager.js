@@ -69,6 +69,9 @@ const saveProjects = () => {
 const loadProjects = () => {
     if(storagePopulated()) {
         projects = [];
+        // Each object stored inside of localStorage is a JSON string. They first need
+        // to be parsed as object literals, and then their properties must be used
+        // to reconstruct the original objects that were saved.
         JSON.parse(localStorage.getItem("projects")).forEach(savedProject => {
             savedProject = JSON.parse(savedProject);
             const project = new Project(savedProject.name, savedProject.isOpen);
@@ -80,14 +83,6 @@ const loadProjects = () => {
 
             projects.push(project);
         });
-
-        // // Each object will be parsed from local storage as object literals rather than
-        // // class objects. Therefore, their class prototypes must be reassigned to give them
-        // // access to their methods.
-        // projects.forEach(project => {
-        //     Object.setPrototypeOf(project, Project.prototype);
-        //     project.tasks.forEach(task => Object.setPrototypeOf(task, Task.prototype));
-        // });
     }
 }
 
