@@ -2,7 +2,7 @@ import { createProjectDisplay } from "./element-factory.js";
 import { displayProjectTabs } from "./sidebar-controller.js";
 import { displayExpandedTask } from "./expanded-task-controller.js";
 import { deleteProject, findProject, getOpenProjects } from "./project-manager.js";
-import { openNewTaskForm } from "./form-handler.js";
+import { openNewTaskForm } from "./new-task-form-controller.js";
 
 const mainContent = document.querySelector("#main-content");
 
@@ -15,13 +15,13 @@ const displayOpenProjects = () => {
 
 mainContent.addEventListener("click", (event) => {
     const selectedButton = event.target;
-    // The project corresponding to the button that was selected is stored in order to
+    // The project display corresponding to the button that was selected is stored in order to
     // allow that project to be accessed and modified accordingly.
     const selectedProjectDisplay = selectedButton.closest(".project");
 
-    // This callback function should only run when a button is selected from a project.
-    // If this returns true, then it means that a button is instead being selected from
-    // an expanded task.
+    // This callback function should only run when a button is selected from a project display.
+    // If this returns true, then it means that a button is instead being selected from an
+    // expanded task.
     if(!selectedProjectDisplay) return;
 
     const selectedProject = findProject(selectedProjectDisplay.dataset.id);
@@ -63,6 +63,8 @@ function editProjectName(project, projectDisplay) {
     const projectNameInput = projectDisplay.querySelector(".project-name");
     projectNameInput.readOnly = false;
 
+    // When this function runs, the cursor will be automatically placed at the end
+    // of the project name input.
     const projectNameLength = projectNameInput.value.length;
     projectNameInput.setSelectionRange(projectNameLength, projectNameLength);
 

@@ -76,18 +76,20 @@ function createTaskDisplay(task, className) {
     const checkbox = createInput(`task-checkbox ${task.priority}`, "checkbox");
     checkbox.checked = task.isComplete;
 
+    // The task name is created as an input rather than a div to allow it to be editable.
     const taskName = createInput("name task-name", "text", task.name, "25")
 
     // The class name/functionality of this button will vary depending on whether or not
     // this task display is being used within a project, or as the header of an expanded task.
-    const expandTaskBtn = createIconBtn(
+    const modifyTaskBtn = createIconBtn(
         className === "task" ? expandTaskIcon : editIcon,
         className === "task" ? "view and edit icon" : "icon of a pen", 
-        className === "task" ? "expand-task-btn" : "edit-task-btn");
+        className === "task" ? "expand-task-btn" : "edit-task-btn"
+    );
 
     const deleteTaskBtn = createIconBtn(trashCanIcon, "icon of a trash can", "delete-task-btn");
 
-    taskDisplay.append(checkbox, taskName, expandTaskBtn, deleteTaskBtn);
+    taskDisplay.append(checkbox, taskName, modifyTaskBtn, deleteTaskBtn);
 
     return taskDisplay;
 }

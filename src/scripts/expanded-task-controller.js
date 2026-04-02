@@ -9,7 +9,7 @@ const displayExpandedTask = (project, task) => {
     currentProject = project;
     currentTask = task;
     currentTaskDisplay = createExpandedTaskDisplay(currentTask);
-    attachEventListener()
+    attachTaskEventListener()
 
     const mainContent = document.querySelector("#main-content");
     mainContent.textContent = "";
@@ -18,7 +18,7 @@ const displayExpandedTask = (project, task) => {
 
 // This event listener can't be attached immediately, because currentTaskDisplay
 // is undefined until an expanded task is displayed
-function attachEventListener() {
+function attachTaskEventListener() {
     currentTaskDisplay.addEventListener("click", (event) => {
         const selectedButton = event.target;
 
@@ -84,6 +84,7 @@ function toggleInputs(inputs, toggleStatus) {
     // depending on that value.
     function changePriorityColor(event) {
         const taskPrioritySelector = event.target;
+
         const selectorClassName = taskPrioritySelector.className;
         taskPrioritySelector.className = selectorClassName
             .substring(0, selectorClassName.lastIndexOf(" ")) + 
@@ -109,9 +110,9 @@ function enableConfirmBtn(inputs) {
 
     confirmBtn.addEventListener("click", function submitChanges(event) {
         const [taskNameInput,  
-                taskDateInput, 
-                taskPrioritySelector,
-                taskDescriptionInput] = inputs;
+               taskDateInput, 
+               taskPrioritySelector,
+               taskDescriptionInput] = inputs;
 
         taskNameInput.value = taskNameInput.value.trim() ? taskNameInput.value : "Task";
         taskDescriptionInput.value = taskDescriptionInput.value.trim() ? 

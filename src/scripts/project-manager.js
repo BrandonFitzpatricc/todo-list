@@ -54,7 +54,7 @@ const getAllProjects = () => {
     return projects;
 }
 
-// The output of this function will be read by the main content controller
+// The output of this function will be read by the project display controller
 // and used for displaying projects.
 const getOpenProjects = () => {
     return projects.filter(project => project.isOpen);

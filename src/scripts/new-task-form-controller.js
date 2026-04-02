@@ -13,14 +13,7 @@ let selectedProject;
 
 const openNewTaskForm = (project) => {
     selectedProject = project
-    newTaskForm.reset();
-
-    const selectorClassName = taskPrioritySelector.className;
-    taskPrioritySelector.className = selectorClassName
-        .substring(0, selectorClassName.lastIndexOf(" ")) + " not-important";
-
-    taskDateInput.defaultValue = format(new Date(), "yyyy-MM-dd");
-
+    resetFormControls();
     newTaskDialog.showModal();
 };
 
@@ -45,5 +38,17 @@ document.querySelector("#submit-task-btn").addEventListener("click", () => {
 });
 
 document.querySelector("#close-form-btn").addEventListener("click", () => newTaskDialog.close());
+
+function resetFormControls() {
+    newTaskForm.reset();
+
+    // The selector contains a class that matches its current value. "not-important"
+    // is both the default selector value and class when the form is first opened.
+    const selectorClassName = taskPrioritySelector.className;
+    taskPrioritySelector.className = selectorClassName
+        .substring(0, selectorClassName.lastIndexOf(" ")) + " not-important";
+
+    taskDateInput.defaultValue = format(new Date(), "yyyy-MM-dd");
+}
 
 export { openNewTaskForm };
