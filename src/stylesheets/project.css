@@ -1,0 +1,29 @@
+.main-content {
+  .project {
+    width: 90%;
+    margin: 0 auto 75px auto;
+
+    & .task-group {
+      font-size: 22px;
+
+      & + .task-group {
+        margin-top: 50px;
+      }
+
+      & .group-date {
+        margin: 25px 0 0 5px;
+      }
+
+      & .task {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 0 15px;
+
+        & .task-name {
+          margin-right: auto;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,82 @@
+body {
+  font-family:
+    system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  display: grid;
+  grid-template-columns: minmax(375px, 425px) minmax(700px, 1fr);
+}
+
+* {
+  color: #5d5c5c;
+  pointer-events: none;
+}
+
+.icon {
+  filter: invert(37%) sepia(0%) saturate(0%) hue-rotate(153deg) brightness(93%)
+    contrast(90%);
+  width: 40px;
+  height: auto;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+button {
+  border-style: none;
+  background-color: inherit;
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+textarea {
+  padding: 5px;
+}
+
+& :is(input, textarea):read-only,
+:disabled {
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+input[type="checkbox"],
+select {
+  &.important {
+    --primary-color: #ff0000;
+    --secondary-color: #ffb0b0;
+  }
+
+  &.semi-important {
+    --primary-color: #5b5b5b;
+    --secondary-color: #d3d3d3;
+  }
+
+  &.not-important {
+    --primary-color: #0690be;
+    --secondary-color: #add8e6;
+  }
+}
+
+select {
+  appearance: none;
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  box-shadow: 1px 1px 1px var(--primary-color);
+  position: relative;
+
+  &:focus {
+    outline: none;
+  }
+
+  &:enabled {
+    cursor: pointer;
+  }
+
+  & option {
+    background-color: #ffffff;
+  }
+}

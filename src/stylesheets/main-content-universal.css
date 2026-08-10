@@ -1,0 +1,45 @@
+.main-content {
+  padding: 75px 15px;
+
+  hr {
+    margin: 15px 0;
+  }
+
+  & .heading {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 5px;
+
+    & .name {
+      width: 70%;
+      margin-right: auto;
+      font-size: 30px;
+      font-weight: bold;
+    }
+  }
+
+  & :is(input, textarea):read-write {
+    background-color: #f0f0f0;
+  }
+
+  & input[type="checkbox"] {
+    appearance: none;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    border: 2px solid var(--primary-color);
+    background-color: var(--secondary-color);
+    border-radius: 25px;
+    cursor: pointer;
+    pointer-events: auto;
+
+    &:checked::before {
+      content: "⬤";
+      color: var(--primary-color);
+      position: absolute;
+      left: 0.5px;
+      bottom: -0.5px;
+    }
+  }
+}

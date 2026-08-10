@@ -1,0 +1,51 @@
+.sidebar {
+  background-color: #f0f0f0;
+
+  & .tabs {
+    position: sticky;
+    top: 25px;
+
+    & .tab {
+      width: 100%;
+      display: flex;
+      align-items: center;
+
+      &:hover {
+        background-color: #b5b5b5 !important;
+      }
+
+      &.selected {
+        background-color: #d3d3d3;
+      }
+
+      &.my-projects {
+        font-size: 25px;
+        font-weight: bold;
+        padding: 7px 35px;
+        margin-top: 25px;
+        gap: 15px;
+
+        & .icon {
+          width: 45px;
+        }
+      }
+
+      &.project,
+      &.new-project {
+        font-size: 18px;
+        padding: 4px 42px;
+        gap: 10px;
+      }
+
+      &.project .project-name {
+        width: 80%;
+        background-color: inherit;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+        }
+      }
+    }
+  }
+}

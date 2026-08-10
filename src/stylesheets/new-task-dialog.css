@@ -1,0 +1,72 @@
+.new-task-dialog {
+  border: 2px solid #5d5c5c;
+  width: 800px;
+  height: 800px;
+  justify-self: center;
+  align-self: center;
+
+  & .new-task-form {
+    padding: 25px;
+    text-align: center;
+
+    & .form-title {
+      font-size: 38px;
+    }
+
+    & label {
+      display: block;
+      font-size: 28px;
+      text-align: left;
+      margin-top: 10px;
+    }
+
+    & input,
+    textarea,
+    select {
+      pointer-events: auto;
+      font-size: 20px;
+      width: 100%;
+      padding: 5px 10px;
+      resize: none;
+
+      &:focus {
+        outline: none;
+      }
+    }
+
+    input,
+    .task-description,
+    .add-task-btn {
+      border: 1px solid #5d5c5c;
+      box-shadow: 2px 2px 2px #5d5c5c;
+    }
+
+    & .task-description {
+      height: 225px;
+    }
+
+    & .add-task-btn {
+      font-size: 25px;
+      width: 28%;
+      border: 1px solid #5d5c5c;
+      margin-top: 25px;
+
+      &:active {
+        box-shadow: inset 2px 2px 2px #5d5c5c;
+      }
+    }
+
+    & .close-form-btn {
+      width: 50px;
+      height: 50px;
+      background: url("../icons/close-box-outline.svg") center / 50px no-repeat;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+
+      &:hover {
+        background-image: url("../icons/close-box-filled.svg");
+      }
+    }
+  }
+}
