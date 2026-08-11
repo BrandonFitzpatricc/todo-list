@@ -4,8 +4,9 @@ import {
   createTaskDisplay,
   createInput,
   createElement,
-  Attribute,
 } from "./utilities/element-factory";
+
+import { Attribute } from "./utilities/attribute";
 
 const displayExpandedTask = (project, task) => {
   const mainContent = document.querySelector("#main-content");

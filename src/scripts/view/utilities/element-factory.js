@@ -2,6 +2,8 @@ import editIcon from "../../../icons/edit.svg";
 import trashCanIcon from "../../../icons/delete.svg";
 import expandTaskIcon from "../../../icons/expand-task.svg";
 
+import { Attribute } from "./attribute";
+
 const createTaskDisplay = (task, className) => {
   const taskDisplay = createElement(
     "div",
@@ -74,28 +76,4 @@ const createElement = (elementType, textContent, ...attributes) => {
   return newElement;
 };
 
-class Attribute {
-  #name;
-  #value;
-
-  constructor(name, value) {
-    this.#name = name;
-    this.#value = value;
-  }
-
-  get name() {
-    return this.#name;
-  }
-
-  get value() {
-    return this.#value;
-  }
-}
-
-export {
-  createTaskDisplay,
-  createIconBtn,
-  createInput,
-  createElement,
-  Attribute,
-};
+export { createTaskDisplay, createIconBtn, createInput, createElement };

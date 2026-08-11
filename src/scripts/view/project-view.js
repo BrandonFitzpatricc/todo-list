@@ -9,8 +9,9 @@ import {
   createInput,
   createIconBtn,
   createElement,
-  Attribute,
 } from "./utilities/element-factory.js";
+
+import { Attribute } from "./utilities/attribute.js";
 
 import { getOpenProjects } from "../model/project-manager.js";
 
