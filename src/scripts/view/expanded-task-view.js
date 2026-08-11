@@ -4,6 +4,7 @@ import {
   createTaskDisplay,
   createInput,
   createElement,
+  createTextElement,
 } from "./utilities/element-factory";
 
 import { Attribute } from "./utilities/attribute";
@@ -17,24 +18,15 @@ const displayExpandedTask = (project, task) => {
 function createExpandedTaskDisplay(task) {
   const expandedTaskDisplay = createElement(
     "div",
-    "",
-    new Attribute("class", "expanded-task"),
+    "expanded-task",
     new Attribute("data-id", task.id),
   );
 
-  const backBtn = createElement(
-    "button",
-    "Back to projects",
-    new Attribute("class", "back-btn"),
-  );
+  const backBtn = createTextElement("button", "back-btn", "Back to projects");
 
   const taskHeading = createTaskDisplay(task, "heading task-heading");
 
-  const taskInfo = createElement(
-    "div",
-    "",
-    new Attribute("class", "task-info"),
-  );
+  const taskInfo = createElement("div", "task-info");
 
   const taskDate = createInput(
     "task-date",
@@ -44,25 +36,31 @@ function createExpandedTaskDisplay(task) {
 
   const taskPriority = createElement(
     "select",
-    "",
-    new Attribute("class", `task-priority ${task.priority}`),
+    `task-priority ${task.priority}`,
     new Attribute("disabled"),
   );
 
   const taskPriorityOptions = [
-    createElement(
+    createTextElement(
       "option",
+      "",
       "Not Important",
       new Attribute("value", "not-important"),
     ),
 
-    createElement(
+    createTextElement(
       "option",
+      "",
       "Semi Important",
       new Attribute("value", "semi-important"),
     ),
 
-    createElement("option", "Important", new Attribute("value", "important")),
+    createTextElement(
+      "option",
+      "",
+      "Important",
+      new Attribute("value", "important"),
+    ),
   ];
 
   taskPriorityOptions.forEach((option) => {
@@ -72,19 +70,19 @@ function createExpandedTaskDisplay(task) {
 
   taskInfo.append(taskDate, taskPriority);
 
-  const taskDescription = createElement(
+  const taskDescription = createTextElement(
     "textarea",
+    "task-description",
     task.description,
-    new Attribute("class", "task-description"),
     new Attribute("type", "text"),
     new Attribute("maxlength", 500),
     new Attribute("readonly"),
   );
 
-  const confirmChangesBtn = createElement(
+  const confirmChangesBtn = createTextElement(
     "button",
+    "confirm-changes-btn hidden",
     "Confirm changes",
-    new Attribute("class", "confirm-changes-btn hidden"),
   );
 
   expandedTaskDisplay.append(

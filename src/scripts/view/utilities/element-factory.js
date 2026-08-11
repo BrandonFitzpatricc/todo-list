@@ -7,8 +7,7 @@ import { Attribute } from "./attribute";
 const createTaskDisplay = (task, className) => {
   const taskDisplay = createElement(
     "div",
-    "",
-    new Attribute("class", className),
+    className,
     new Attribute("data-id", task.id),
   );
 
@@ -40,8 +39,7 @@ const createTaskDisplay = (task, className) => {
 const createInput = (className, type, value, maxlength) => {
   return createElement(
     "input",
-    "",
-    new Attribute("class", className),
+    className,
     new Attribute("type", type),
     new Attribute("value", value ? value : ""),
     new Attribute("maxlength", maxlength ? maxlength : undefined),
@@ -50,12 +48,11 @@ const createInput = (className, type, value, maxlength) => {
 };
 
 const createIconBtn = (filePath, altText, className) => {
-  const btn = createElement("button", "", new Attribute("class", className));
+  const btn = createElement("button", className);
 
   const icon = createElement(
     "img",
-    "",
-    new Attribute("class", "icon"),
+    "icon",
     new Attribute("src", filePath),
     new Attribute("alt", altText),
     new Attribute("width", "40"),
@@ -67,13 +64,29 @@ const createIconBtn = (filePath, altText, className) => {
   return btn;
 };
 
-const createElement = (elementType, textContent, ...attributes) => {
-  const newElement = document.createElement(elementType);
-  newElement.innerHTML = textContent;
-  attributes.forEach((attribute) =>
-    newElement.setAttribute(attribute.name, attribute.value),
-  );
-  return newElement;
+const createElement = (type, className, ...attributes) => {
+  const element = document.createElement(type);
+  element.className = className;
+  attributes.forEach((attribute) => {
+    element.setAttribute(attribute.name, attribute.value);
+  });
+  return element;
 };
 
-export { createTaskDisplay, createIconBtn, createInput, createElement };
+const createTextElement = (type, className, textContent, ...attributes) => {
+  const element = document.createElement(type);
+  element.className = className;
+  element.textContent = textContent;
+  attributes.forEach((attribute) => {
+    element.setAttribute(attribute.name, attribute.value);
+  });
+  return element;
+};
+
+export {
+  createTaskDisplay,
+  createIconBtn,
+  createInput,
+  createElement,
+  createTextElement,
+};

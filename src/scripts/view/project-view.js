@@ -9,6 +9,7 @@ import {
   createInput,
   createIconBtn,
   createElement,
+  createTextElement,
 } from "./utilities/element-factory.js";
 
 import { Attribute } from "./utilities/attribute.js";
@@ -27,16 +28,11 @@ const displayOpenProjects = () => {
 const createProjectDisplay = (project) => {
   const projectDisplay = createElement(
     "div",
-    "",
-    new Attribute("class", "project"),
+    "project",
     new Attribute("data-id", project.id),
   );
 
-  const projectHeading = createElement(
-    "div",
-    "",
-    new Attribute("class", "heading project-heading"),
-  );
+  const projectHeading = createElement("div", "heading project-heading");
 
   // The project name is created as an input rather than a div to allow it to be editable.
   const projectName = createInput(
@@ -84,18 +80,14 @@ const createProjectDisplay = (project) => {
     if (isNewDate) {
       date = task.date;
 
-      taskGroup = createElement(
-        "div",
-        "",
-        new Attribute("class", "task-group"),
-      );
+      taskGroup = createElement("div", "task-group");
 
       projectDisplay.appendChild(taskGroup);
 
-      const taskGroupHeading = createElement(
+      const taskGroupHeading = createTextElement(
         "div",
+        "group-date",
         format(date, "MMMM dd yyyy"),
-        new Attribute("class", "group-date"),
       );
 
       taskGroup.append(taskGroupHeading, createElement("hr", ""));
