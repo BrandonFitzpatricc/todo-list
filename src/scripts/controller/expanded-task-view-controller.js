@@ -30,7 +30,7 @@ function attachTaskEventListener() {
           "input:not([type='checkbox']), select, textarea",
         );
 
-        toggleInputs(inputs, "enabled");
+        enableInputs(inputs);
         enableConfirmBtn(inputs);
       },
 
@@ -49,6 +49,14 @@ function attachTaskEventListener() {
     // one of the button handler properties.
     buttonHandler[selectedButton.className.split(" ")[0]]();
   });
+}
+
+function enableInputs(inputs) {
+  toggleInputs(inputs, "enabled");
+}
+
+function disableInputs(inputs) {
+  toggleInputs(inputs, "disabled");
 }
 
 // Inputs can be manually toggled to either enabled or disabled using the toggleStatus parameter.
@@ -81,18 +89,10 @@ function toggleInputs(inputs, toggleStatus) {
   // depending on that value.
   function changePriorityColor(event) {
     const taskPrioritySelector = event.target;
-
-    const selectorClassName = taskPrioritySelector.className;
-    taskPrioritySelector.className =
-      selectorClassName.substring(0, selectorClassName.lastIndexOf(" ")) +
-      ` ${taskPrioritySelector.value}`;
+    taskPrioritySelector.className = `task-priority ${taskPrioritySelector.value}`;
 
     const taskCheckbox = currentTaskDisplay.querySelector(".task-checkbox");
-    taskCheckbox.className =
-      taskCheckbox.className.substring(
-        0,
-        taskCheckbox.className.lastIndexOf(" "),
-      ) + ` ${taskPrioritySelector.value}`;
+    taskCheckbox.className = `task-checkbox ${taskPrioritySelector.value}`;
   }
 
   function stopPropagation(event) {
@@ -101,13 +101,8 @@ function toggleInputs(inputs, toggleStatus) {
 }
 
 function enableConfirmBtn(inputs) {
-  // Toggles visibility of the confirm changes button by removing the
-  // "hidden" class from it.
   const confirmBtn = currentTaskDisplay.querySelector(".confirm-changes-btn");
-  confirmBtn.className = confirmBtn.className.substring(
-    0,
-    confirmBtn.className.lastIndexOf(" "),
-  );
+  confirmBtn.className = confirmBtn.className.replace("hidden", "");
 
   confirmBtn.addEventListener("click", function submitChanges(event) {
     const [
@@ -120,6 +115,7 @@ function enableConfirmBtn(inputs) {
     taskNameInput.value = taskNameInput.value.trim()
       ? taskNameInput.value
       : "Task";
+
     taskDescriptionInput.value = taskDescriptionInput.value.trim()
       ? taskDescriptionInput.value
       : "No Description";
@@ -134,7 +130,7 @@ function enableConfirmBtn(inputs) {
     // Note: each event listener that was added during the task editing process should be
     // removed once the changes have been submitted, as these event listeners only serve a
     // purpose while the user is editing a task.
-    toggleInputs(inputs, "disabled");
+    disableInputs(inputs);
 
     confirmBtn.className = confirmBtn.className + " hidden";
     confirmBtn.removeEventListener("click", submitChanges);
