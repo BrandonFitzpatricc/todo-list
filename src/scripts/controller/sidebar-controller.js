@@ -6,6 +6,7 @@ import {
   toggleProject,
   toggleAllProjects,
   atMaxProjects,
+  closeAllProjects,
 } from "../model/project-manager.js";
 
 const tabs = document.querySelector("#tabs");
@@ -48,7 +49,7 @@ function createNewProject() {
       displayProjectTabs();
 
       // The project that was just created should be automatically opened individually.
-      toggleAllProjects("closed");
+      closeAllProjects();
       const projectTabs = tabs.querySelectorAll(".project");
       selectProjectTab(projectTabs[projectTabs.length - 1]);
 

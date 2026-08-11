@@ -22,12 +22,20 @@ const toggleProject = (id) => {
   // an individual project is being opened. Therefore, every project must be closed
   // before opening the target project.
   if (allProjectsOpen) {
-    projects.forEach((project) => project.toggleOpenStatus("closed"));
+    closeAllProjects();
     allProjectsOpen = false;
   }
 
   findProject(id).toggleOpenStatus();
 };
+
+const openAllProjects = () => {
+  toggleAllProjects("open");
+}
+
+const closeAllProjects = () => {
+  toggleAllProjects("closed");
+}
 
 // openStatus can be used to strictly toggle all projects either open or closed.
 // If this parameter is omitted, the projects will either be opened or closed
@@ -98,6 +106,8 @@ export {
   deleteProject,
   findProject,
   toggleProject,
+  openAllProjects,
+  closeAllProjects,
   toggleAllProjects,
   getAllProjects,
   getOpenProjects,
