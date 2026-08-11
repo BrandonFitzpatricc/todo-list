@@ -102,6 +102,7 @@ const loadProjects = () => {
 };
 
 export {
+  allProjectsOpen,
   addProject,
   deleteProject,
   findProject,

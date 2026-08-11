@@ -1,6 +1,6 @@
 import projectFolderIcon from "../../icons/project-folder.svg";
 
-import { getAllProjects } from "../model/project-manager.js";
+import { allProjectsOpen, getAllProjects } from "../model/project-manager.js";
 
 import {
   createIconBtn,
@@ -11,6 +11,10 @@ const tabContainer = document.querySelector("#tabs");
 const newProjectTab = document.querySelector("#new-project");
 
 const displayProjectTabs = () => {
+  document.querySelector(".my-projects").className = allProjectsOpen
+    ? "tab my-projects selected"
+    : "tab my-projects";
+
   tabContainer.querySelectorAll(".project").forEach((projectTab) => {
     tabContainer.removeChild(projectTab);
   });
@@ -20,14 +24,15 @@ const displayProjectTabs = () => {
   });
 };
 
-// Note: project tabs can be created without passing in a project object. The purpose
-// of these tabs is to provide a clean interface for users to enter a project name.
 const createProjectTab = (project) => {
   const tab = createIconBtn(
     projectFolderIcon,
     "icon of a folder",
     "tab project",
   );
+
+  // prettier-ignore
+  if(project) tab.className += ` ${project.isOpen && !allProjectsOpen ? "selected" : ""}`
 
   tab.dataset.id = project ? project.id : "";
 
@@ -39,6 +44,8 @@ const createProjectTab = (project) => {
     "24",
   );
 
+  // Note: project tabs can be created without passing in a project object. The purpose
+  // of these tabs is to provide a clean interface for users to enter a project name.
   if (!project) {
     projectName.readOnly = false;
     tab.disabled = true;
