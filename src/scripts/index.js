@@ -6,11 +6,11 @@ import "../stylesheets/project.css";
 import "../stylesheets/expanded-task.css";
 import "../stylesheets/new-task-dialog.css";
 
-import { loadProjects, toggleAllProjects } from "./project-manager.js";
-import { displayOpenProjects } from "./project-display-controller.js";
-import { displayProjectTabs } from "./sidebar-controller.js";
+import { loadProjects, toggleAllProjects } from "./model/project-manager.js";
+import { initializeSidebar } from "./controller/sidebar-controller.js";
+import { initializeProjectView } from "./controller/project-view-controller.js";
 
 loadProjects();
 toggleAllProjects("open");
-displayProjectTabs();
-displayOpenProjects();
+initializeSidebar();
+initializeProjectView();

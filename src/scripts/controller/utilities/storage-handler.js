@@ -1,4 +1,4 @@
-import { saveProjects } from "./project-manager.js";
+import { saveProjects } from "../../model/project-manager.js";
 
 const storageAvailable = (type) => {
   let storage;

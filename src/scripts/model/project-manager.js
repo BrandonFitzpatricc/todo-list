@@ -1,5 +1,5 @@
 import { Project } from "./project.js";
-import { storageAvailable, storagePopulated } from "./storage-handler.js";
+import { storageAvailable, storagePopulated } from "../controller/utilities/storage-handler.js";
 
 let allProjectsOpen;
 

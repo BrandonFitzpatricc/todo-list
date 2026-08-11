@@ -1,19 +1,17 @@
-import { createExpandedTaskDisplay } from "./element-factory";
-import { displayOpenProjects } from "./project-display-controller";
+import { displayOpenProjects } from "../view/project-view";
+import { displayExpandedTask } from "../view/expanded-task-view";
 
 let currentProject;
 let currentTask;
 let currentTaskDisplay;
 
-const displayExpandedTask = (project, task) => {
+const initializeExpandedTask = (project, task) => {
+  displayExpandedTask(project, task);
+
   currentProject = project;
   currentTask = task;
-  currentTaskDisplay = createExpandedTaskDisplay(currentTask);
+  currentTaskDisplay = document.querySelector(".expanded-task");
   attachTaskEventListener();
-
-  const mainContent = document.querySelector("#main-content");
-  mainContent.textContent = "";
-  mainContent.appendChild(currentTaskDisplay);
 };
 
 // This event listener can't be attached immediately, because currentTaskDisplay
@@ -147,4 +145,4 @@ function enableConfirmBtn(inputs) {
   });
 }
 
-export { displayExpandedTask };
+export { initializeExpandedTask };

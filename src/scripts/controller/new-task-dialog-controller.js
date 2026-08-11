@@ -1,20 +1,20 @@
 import { format } from "date-fns";
 
-import { displayOpenProjects } from "./project-display-controller.js";
+import { displayOpenProjects } from "../view/project-view.js";
 
-const newTaskDialog = document.querySelector("#new-task-dialog");
-const newTaskForm = document.querySelector("#new-task-form");
-const taskNameInput = document.querySelector("#task-name");
-const taskDescriptionInput = document.querySelector("#task-description");
-const taskDateInput = document.querySelector("#task-date");
-const taskPrioritySelector = document.querySelector("#task-priority");
+const dialog = document.querySelector("#new-task-dialog");
+const form = dialog.querySelector("#new-task-form");
+const taskNameInput = form.querySelector("#task-name");
+const taskDescriptionInput = form.querySelector("#task-description");
+const taskDateInput = form.querySelector("#task-date");
+const taskPrioritySelector = form.querySelector("#task-priority");
 
 let selectedProject;
 
-const openNewTaskForm = (project) => {
+const openNewTaskDialog = (project) => {
   selectedProject = project;
   resetFormControls();
-  newTaskDialog.showModal();
+  dialog.showModal();
 };
 
 // The selector contains a class that matches its current value. This class changes the color
@@ -34,16 +34,16 @@ document.querySelector("#submit-task-btn").addEventListener("click", () => {
     taskPrioritySelector.value,
   );
 
-  newTaskDialog.close();
+  dialog.close();
   displayOpenProjects();
 });
 
 document
   .querySelector("#close-form-btn")
-  .addEventListener("click", () => newTaskDialog.close());
+  .addEventListener("click", () => dialog.close());
 
 function resetFormControls() {
-  newTaskForm.reset();
+  form.reset();
 
   // The selector contains a class that matches its current value. "not-important"
   // is both the default selector value and class when the form is first opened.
@@ -55,4 +55,4 @@ function resetFormControls() {
   taskDateInput.defaultValue = format(new Date(), "yyyy-MM-dd");
 }
 
-export { openNewTaskForm };
+export { openNewTaskDialog };

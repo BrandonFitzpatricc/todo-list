@@ -1,0 +1,52 @@
+import projectFolderIcon from "../../icons/project-folder.svg";
+
+import { getAllProjects } from "../model/project-manager.js";
+
+import {
+  createIconBtn,
+  createInput,
+} from "../view/utilities/element-factory.js";
+
+const tabContainer = document.querySelector("#tabs");
+const newProjectTab = document.querySelector("#new-project");
+
+const displayProjectTabs = () => {
+  tabContainer.querySelectorAll(".project").forEach((projectTab) => {
+    tabContainer.removeChild(projectTab);
+  });
+
+  getAllProjects().forEach((project) => {
+    tabContainer.insertBefore(createProjectTab(project), newProjectTab);
+  });
+};
+
+// Note: project tabs can be created without passing in a project object. The purpose
+// of these tabs is to provide a clean interface for users to enter a project name.
+const createProjectTab = (project) => {
+  const tab = createIconBtn(
+    projectFolderIcon,
+    "icon of a folder",
+    "tab project",
+  );
+
+  tab.dataset.id = project ? project.id : "";
+
+  // The project name is created as an input rather than a div to allow it to be editable.
+  const projectName = createInput(
+    "name project-name",
+    "text",
+    project ? project.name : "",
+    "24",
+  );
+
+  if (!project) {
+    projectName.readOnly = false;
+    tab.disabled = true;
+  }
+
+  tab.appendChild(projectName);
+
+  return tab;
+};
+
+export { displayProjectTabs, createProjectTab };

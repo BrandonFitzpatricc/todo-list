@@ -1,47 +1,36 @@
-import { createProjectTab } from "./element-factory.js";
-
-import { displayOpenProjects } from "./project-display-controller.js";
+import { displayProjectTabs, createProjectTab } from "../view/sidebar";
+import { displayOpenProjects } from "../view/project-view.js";
 
 import {
   addProject,
   toggleProject,
   toggleAllProjects,
-  getAllProjects,
   atMaxProjects,
-} from "./project-manager.js";
+} from "../model/project-manager.js";
 
-const tabContainer = document.querySelector("#tabs");
-const newProjectTab = document.querySelector("#new-project");
+const tabs = document.querySelector("#tabs");
+const newProjectTab = tabs.querySelector("#new-project");
 
-const displayProjectTabs = () => {
-  tabContainer.querySelectorAll(".project").forEach((projectTab) => {
-    tabContainer.removeChild(projectTab);
-  });
+const initializeSidebar = () => {
+  displayProjectTabs();
 
-  getAllProjects().forEach((project) => {
-    tabContainer.insertBefore(createProjectTab(project), newProjectTab);
+  tabs.addEventListener("click", (event) => {
+    const tab = event.target;
+
+    if (tab.id !== "new-project") {
+      selectProjectTab(tab);
+    } else if (!atMaxProjects()) {
+      createNewProject();
+    }
   });
 };
-
-tabContainer.addEventListener("click", (event) => {
-  const tab = event.target;
-
-  if (tab.id !== "new-project") {
-    selectProjectTab(tab);
-  } else if (!atMaxProjects()) {
-    createNewProject();
-  }
-});
 
 function createNewProject() {
   // projectNameTab is a dummy tab that does not contain any project information.
   // It simply provides a clean interface for users to enter the name of a new project
   // and facilitate the creation of that project.
   const projectNameTab = createProjectTab(null);
-  tabContainer.insertBefore(
-    projectNameTab,
-    document.querySelector("#new-project"),
-  );
+  tabs.insertBefore(projectNameTab, document.querySelector("#new-project"));
 
   const projectNameInput = projectNameTab.querySelector(".project-name");
   projectNameInput.focus();
@@ -60,7 +49,7 @@ function createNewProject() {
 
       // The project that was just created should be automatically opened individually.
       toggleAllProjects("closed");
-      const projectTabs = tabContainer.querySelectorAll(".project");
+      const projectTabs = tabs.querySelectorAll(".project");
       selectProjectTab(projectTabs[projectTabs.length - 1]);
 
       if (atMaxProjects()) newProjectTab.className += " hidden";
@@ -72,7 +61,7 @@ function selectProjectTab(tab) {
   if (tab.id === "my-projects") {
     toggleAllProjects();
 
-    tabContainer.querySelectorAll(".tab.project").forEach((projectTab) => {
+    tabs.querySelectorAll(".tab.project").forEach((projectTab) => {
       toggleTabSelection(projectTab, "off");
     });
   } else {
@@ -106,4 +95,4 @@ function toggleTabSelection(tab, selectionStatus) {
   }
 }
 
-export { displayProjectTabs };
+export { initializeSidebar };
