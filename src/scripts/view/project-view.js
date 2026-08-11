@@ -16,9 +16,8 @@ import { Attribute } from "./utilities/attribute.js";
 
 import { getOpenProjects } from "../model/project-manager.js";
 
-const mainContent = document.querySelector("#main-content");
-
 const displayOpenProjects = () => {
+  const mainContent = document.querySelector("#main-content");
   mainContent.textContent = "";
   getOpenProjects().forEach((project) => {
     mainContent.appendChild(createProjectDisplay(project));
