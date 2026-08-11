@@ -9,7 +9,7 @@ import {
 
 import { Attribute } from "./utilities/attribute";
 
-const displayExpandedTask = (project, task) => {
+const displayExpandedTask = (task) => {
   const mainContent = document.querySelector("#main-content");
   mainContent.textContent = "";
   mainContent.appendChild(createExpandedTaskDisplay(task));

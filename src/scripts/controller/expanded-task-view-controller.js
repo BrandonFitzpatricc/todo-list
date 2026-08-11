@@ -6,7 +6,7 @@ let currentTask;
 let currentTaskDisplay;
 
 const initializeExpandedTask = (project, task) => {
-  displayExpandedTask(project, task);
+  displayExpandedTask(task);
 
   currentProject = project;
   currentTask = task;
