@@ -30,6 +30,7 @@ function attachTaskEventListener() {
           "input:not([type='checkbox']), select, textarea",
         );
 
+        selectedButton.disabled = true;
         enableInputs(inputs);
         enableConfirmBtn(inputs);
       },
@@ -134,6 +135,8 @@ function enableConfirmBtn(inputs) {
 
     confirmBtn.className = confirmBtn.className + " hidden";
     confirmBtn.removeEventListener("click", submitChanges);
+
+    document.querySelector(".edit-task-btn").disabled = false;
 
     // This prevents the currentTaskDisplay event listener callback function from
     // running each time the confirm button is clicked, which would break the code.
