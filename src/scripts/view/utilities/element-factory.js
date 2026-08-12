@@ -1,6 +1,4 @@
-import editIcon from "../../../icons/edit.svg";
-import trashCanIcon from "../../../icons/delete.svg";
-import expandTaskIcon from "../../../icons/expand-task.svg";
+import { editIcon, trashCanIcon, expandTaskIcon } from "./icon-manager.js";
 
 import { Attribute } from "./attribute";
 
@@ -23,14 +21,14 @@ const createTaskDisplay = (task, className) => {
     className === "task" ? expandTaskIcon : editIcon,
     className === "task" ? "view and edit icon" : "icon of a pen",
     className === "task" ? "expand-task-btn" : "edit-task-btn",
-    "40"
+    "40",
   );
 
   const deleteTaskBtn = createIconBtn(
     trashCanIcon,
     "icon of a trash can",
     "delete-task-btn",
-    "40"
+    "40",
   );
 
   taskDisplay.append(checkbox, taskName, modifyTaskBtn, deleteTaskBtn);

@@ -1,8 +1,10 @@
 import { format } from "date-fns";
 
-import addTaskIcon from "../../icons/add-task.svg";
-import editIcon from "../../icons/edit.svg";
-import trashCanIcon from "../../icons/delete.svg";
+import {
+  addTaskIcon,
+  editIcon,
+  trashCanIcon,
+} from "./utilities/icon-manager.js";
 
 import {
   createTaskDisplay,
@@ -45,21 +47,21 @@ const createProjectDisplay = (project) => {
     addTaskIcon,
     "icon of a plus sign inside of a circle",
     "add-task-btn",
-    "40"
+    "40",
   );
 
   const editProjectBtn = createIconBtn(
     editIcon,
     "icon of a pen",
     "edit-project-btn",
-    "40"
+    "40",
   );
 
   const deleteProjectBtn = createIconBtn(
     trashCanIcon,
     "icon of a trash can",
     "delete-project-btn",
-    "40"
+    "40",
   );
 
   projectHeading.append(

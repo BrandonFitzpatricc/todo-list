@@ -1,6 +1,8 @@
-import projectFoldersIcon from "../../icons/project-folders.svg";
-import projectFolderIcon from "../../icons/project-folder.svg";
-import newProjectIcon from "../../icons/new-project.svg";
+import {
+  projectFoldersIcon,
+  projectFolderIcon,
+  newProjectIcon,
+} from "./utilities/icon-manager.js";
 
 import { allProjectsOpen, getAllProjects } from "../model/project-manager.js";
 
