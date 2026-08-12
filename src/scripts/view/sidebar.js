@@ -1,27 +1,27 @@
+import projectFoldersIcon from "../../icons/project-folders.svg";
 import projectFolderIcon from "../../icons/project-folder.svg";
+import newProjectIcon from "../../icons/new-project.svg";
 
 import { allProjectsOpen, getAllProjects } from "../model/project-manager.js";
 
 import {
   createIconBtn,
   createInput,
+  createTextElement,
 } from "../view/utilities/element-factory.js";
 
 const tabContainer = document.querySelector("#tabs");
-const newProjectTab = document.querySelector("#new-project");
 
-const displayProjectTabs = () => {
-  document.querySelector(".my-projects").className = allProjectsOpen
-    ? "tab my-projects selected"
-    : "tab my-projects";
+const displayTabs = () => {
+  tabContainer.textContent = "";
 
-  tabContainer.querySelectorAll(".project").forEach((projectTab) => {
-    tabContainer.removeChild(projectTab);
-  });
+  tabContainer.appendChild(createHeadingTab());
 
   getAllProjects().forEach((project) => {
-    tabContainer.insertBefore(createProjectTab(project), newProjectTab);
+    tabContainer.appendChild(createProjectTab(project));
   });
+
+  tabContainer.appendChild(createNewProjectTab());
 };
 
 const createProjectTab = (project) => {
@@ -29,6 +29,7 @@ const createProjectTab = (project) => {
     projectFolderIcon,
     "icon of a folder",
     "tab project",
+    "40",
   );
 
   // prettier-ignore
@@ -56,4 +57,42 @@ const createProjectTab = (project) => {
   return tab;
 };
 
-export { displayProjectTabs, createProjectTab };
+function createHeadingTab() {
+  const tab = createIconBtn(
+    projectFoldersIcon,
+    "icon of a folder with subfolders",
+    `tab my-projects ${allProjectsOpen ? "selected" : ""}`,
+    "45",
+  );
+
+  tab.id = "my-projects";
+
+  const headingText = createTextElement(
+    "div",
+    "sidebar-heading",
+    "My Projects",
+  );
+
+  tab.append(headingText);
+
+  return tab;
+}
+
+function createNewProjectTab() {
+  const tab = createIconBtn(
+    newProjectIcon,
+    "icon of a plus sign",
+    "tab new-project",
+    "40",
+  );
+
+  tab.id = "new-project";
+
+  const tabText = createTextElement("div", "", "New Project");
+
+  tab.append(tabText);
+
+  return tab;
+}
+
+export { displayTabs, createProjectTab };

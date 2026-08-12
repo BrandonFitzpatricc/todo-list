@@ -45,18 +45,21 @@ const createProjectDisplay = (project) => {
     addTaskIcon,
     "icon of a plus sign inside of a circle",
     "add-task-btn",
+    "40"
   );
 
   const editProjectBtn = createIconBtn(
     editIcon,
     "icon of a pen",
     "edit-project-btn",
+    "40"
   );
 
   const deleteProjectBtn = createIconBtn(
     trashCanIcon,
     "icon of a trash can",
     "delete-project-btn",
+    "40"
   );
 
   projectHeading.append(

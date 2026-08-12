@@ -1,5 +1,5 @@
 import { displayOpenProjects } from "../view/project-view.js";
-import { displayProjectTabs } from "../view/sidebar.js";
+import { displayTabs } from "../view/sidebar.js";
 
 import { deleteProject, findProject } from "../model/project-manager.js";
 
@@ -31,7 +31,7 @@ const initializeProjectView = () => {
       "delete-project-btn": () => {
         deleteProject(selectedProject.id);
         displayOpenProjects();
-        displayProjectTabs();
+        displayTabs();
       },
 
       "delete-task-btn": () => {
@@ -79,7 +79,7 @@ function editProjectName(project, projectDisplay) {
 
         project.name = projectNameInput.value;
         projectNameInput.readOnly = true;
-        displayProjectTabs();
+        displayTabs();
       }
     });
   });

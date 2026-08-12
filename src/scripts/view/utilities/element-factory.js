@@ -23,12 +23,14 @@ const createTaskDisplay = (task, className) => {
     className === "task" ? expandTaskIcon : editIcon,
     className === "task" ? "view and edit icon" : "icon of a pen",
     className === "task" ? "expand-task-btn" : "edit-task-btn",
+    "40"
   );
 
   const deleteTaskBtn = createIconBtn(
     trashCanIcon,
     "icon of a trash can",
     "delete-task-btn",
+    "40"
   );
 
   taskDisplay.append(checkbox, taskName, modifyTaskBtn, deleteTaskBtn);
@@ -47,7 +49,7 @@ const createInput = (className, type, value, maxlength) => {
   );
 };
 
-const createIconBtn = (filePath, altText, className) => {
+const createIconBtn = (filePath, altText, className, dimensions) => {
   const btn = createElement("button", className);
 
   const icon = createElement(
@@ -55,8 +57,8 @@ const createIconBtn = (filePath, altText, className) => {
     "icon",
     new Attribute("src", filePath),
     new Attribute("alt", altText),
-    new Attribute("width", "40"),
-    new Attribute("height", "40"),
+    new Attribute("width", dimensions),
+    new Attribute("height", dimensions),
   );
 
   btn.appendChild(icon);

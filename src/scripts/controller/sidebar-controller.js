@@ -1,4 +1,4 @@
-import { displayProjectTabs, createProjectTab } from "../view/sidebar";
+import { displayTabs, createProjectTab } from "../view/sidebar";
 import { displayOpenProjects } from "../view/project-view.js";
 
 import {
@@ -13,7 +13,7 @@ const tabs = document.querySelector("#tabs");
 const newProjectTab = tabs.querySelector("#new-project");
 
 const initializeSidebar = () => {
-  displayProjectTabs();
+  displayTabs();
 
   tabs.addEventListener("click", (event) => {
     const tab = event.target;
@@ -46,7 +46,7 @@ function createNewProject() {
       // Therefore, this event listener is removed after submission to ensure that
       // this callback function does not run twice.
       projectNameInput.removeEventListener("blur", submitProjectName);
-      displayProjectTabs();
+      displayTabs();
 
       // The project that was just created should be automatically opened individually.
       closeAllProjects();
@@ -66,7 +66,7 @@ function selectProjectTab(tab) {
   }
 
   displayOpenProjects();
-  displayProjectTabs();
+  displayTabs();
 }
 
 export { initializeSidebar };
