@@ -33,13 +33,11 @@
     border-radius: 25px;
     cursor: pointer;
     pointer-events: auto;
+    display: flex;
+    align-items: center;
 
-    &:checked::before {
-      content: "⬤";
-      color: var(--primary-color);
-      position: absolute;
-      left: 0.5px;
-      bottom: -0.5px;
+    &:checked {
+      background-color: var(--primary-color);
     }
   }
 }
