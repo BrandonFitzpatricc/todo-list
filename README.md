@@ -1,9 +1,20 @@
-# todo-list
+# Todo List
 
-This is a todo list that was created using HTML, CSS, and JavaScript. It provides an interface similar in structure to a file explorer, where users have the ability to create an organized system of projects containing checklists of tasks. It provides intuitive interfaces for users to do the following:
+![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/CSS-563d7c?&style=for-the-badge)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![npm](https://img.shields.io/badge/npm-CB3837?style=for-the-badge&labelColor=CB3837&logoColor=CB3837)
+![Webpack](https://img.shields.io/badge/Webpack-529ac7?style=for-the-badge&labelColor=8DD6F9&logoColor=226ea9&logo=webpack)
+![Figma](https://img.shields.io/badge/Figma-7e65ee?&style=for-the-badge)
+
+This is a todo list web application built using the MVC architectural pattern. It provides an interface similar in structure to a file explorer, where users have the ability to create an organized system of projects containing checklists of tasks sorted by date. It utilizes advanced DOM manipulation techniques to enhance user experience by ensuring that this interface is simple to navigate and understand.
+
+<b>NOTE:</b> This application only officially supports desktop and laptop devices. Official support for mobile devices will come in a future patch.
+
+## Features
 - Create new projects
-- Delete an existing project
-- Rename an existing project
+- Delete existing projects
+- Rename existing projects
 - Toggle the view of any individual project and its tasks
 - Toggle the view of all existing projects at once
 - Add a new task to a project with a name, description, date, and priority
@@ -11,7 +22,7 @@ This is a todo list that was created using HTML, CSS, and JavaScript. It provide
 - Delete an existing task from a project
 - Expand an existing task to see all of its details
 - Modify any detail of an existing task through its expanded view
+- Save existing projects upon closing the application and load them upon opening it
 
-These interfaces are provided through a concise GUI, which contains a sidebar for toggling/creating projects, and a main content section for displaying all open projects, or displaying an expanded task. Tasks are organized by date groups, which are displayed in order within their project. The priority of a task is indicated through the color of its checkbox, which changes from cooler to warmer colors as its priority increases. All projects and tasks are saved on the device that they were created from.
-
-This project demonstrates proficient use of HTML, CSS, and JavaScript. It utilizes ES6 modules to divide the application into multiple different segments, each of which serve a clear, distinct purpose and follow the single-responsibility principle, while additionally allowing for the separation of application logic and DOM manipulation. These modules are bundled together with an HTML template and CSS stylesheets through the use of Webpack.
+## Author
+I'm <a href="https://github.com/BrandonFitzpatricc">Brandon Fitzpatrick</a>, the designer and programmer behind this application. I drew inspiration from various existing todo list applications, and attempted to combine my favorite features from all of them into my own applications.
